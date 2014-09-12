@@ -10,6 +10,7 @@ RUN mkdir -p ~/.vim/bundle
 RUN ln -s /devbox/dotfiles/.vimrc ~/.vimrc
 RUN ln -s /devbox/dotfiles/.vim/rc ~/.vim/rc
 RUN git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+RUN git clone https://github.com/Shougo/vimproc.vim ~/.vim/bundle/vimproc.vim
 RUN ~/.vim/bundle/neobundle.vim/bin/neoinstall
 RUN ln -s /devbox/dotfiles/.tmux.conf ~/.tmux.conf
 CMD ["/bin/bash"]
