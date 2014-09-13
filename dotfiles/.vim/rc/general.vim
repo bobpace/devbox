@@ -3,8 +3,8 @@ let g:mapleader = ','
 set lazyredraw             " don't redraw while executing macros
 set fileformats=unix,mac,dos " Automatic end-of-file format detection
 " set autoindent               " automatic indent new lines
-" set smartindent              " be smart about it
-" set expandtab                " expand tabs to spaces
+set smartindent              " be smart about it
+set expandtab                " expand tabs to spaces
 set smarttab                   " no tabs
 set tabstop=2
 set softtabstop=2

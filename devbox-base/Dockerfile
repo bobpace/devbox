@@ -7,7 +7,6 @@ RUN apt-get update && \
     curl git vim tmux sudo\
     build-essential cmake python-dev ca-certificates
 
-
 RUN useradd --create-home devuser && \
     chgrp -R devuser /usr/local && \
     find /usr/local -type d | xargs chmod g+w && \
