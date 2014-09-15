@@ -1,5 +1,6 @@
 FROM ubuntu:14.04
 MAINTAINER Bob Pace <bob.pace@gmail.com>
+
 ENV TERM xterm-256color
 RUN apt-get update && \
     apt-get upgrade -y && \

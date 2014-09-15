@@ -11,4 +11,4 @@ image: base
 clean:
 	@docker rmi --force $(REPOSITORY) $(REPOSITORY)-base
 
-.PHONY: all base devbox clean
+.PHONY: all base image clean
