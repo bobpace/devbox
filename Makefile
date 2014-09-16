@@ -1,14 +1,24 @@
 REPOSITORY := bobpace/devbox
+images = base dotfiles nodejs scala go
 
-all: image
+all: nodejs scala go
 
 base:
-	@cd devbox-base && docker build -t $(REPOSITORY)-base .
+	@cd base && docker build -t $(REPOSITORY)-base .
 
-image: base
-	@docker build -t $(REPOSITORY) .
+dotfiles: base
+	@cd dotfiles && docker build -t $(REPOSITORY)-dotfiles .
+
+nodejs: dotfiles
+	@cd nodejs && docker build -t $(REPOSITORY)-nodejs .
+
+scala: dotfiles
+	@cd scala && docker build -t $(REPOSITORY)-scala .
+
+go: dotfiles
+	@cd go && docker build -t $(REPOSITORY)-go .
 
 clean:
-	@docker rmi --force $(REPOSITORY) $(REPOSITORY)-base
+	@$(foreach image,$(images),docker rmi --force $(REPOSITORY)-$(image);)
 
-.PHONY: all base image clean
+.PHONY: all base dotfiles nodejs scala go clean
