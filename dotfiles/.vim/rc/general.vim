@@ -32,3 +32,4 @@ set incsearch
 set ignorecase
 set smartcase
 set noswapfile
+set suffixesadd+=.js,.cjsx,.coffee
