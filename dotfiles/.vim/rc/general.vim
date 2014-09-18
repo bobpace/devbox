@@ -33,3 +33,5 @@ set ignorecase
 set smartcase
 set noswapfile
 set suffixesadd+=.js,.cjsx,.coffee
+set exrc
+set secure
