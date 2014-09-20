@@ -1,0 +1,1 @@
+NeoBundle 'honza/vim-snippets'
