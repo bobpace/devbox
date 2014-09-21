@@ -1,4 +1,4 @@
-FROM bobpace/devbox-dotfiles
+FROM bobpace/devbox-base
 MAINTAINER Bob Pace <bob.pace@gmail.com>
 
 # Install Go

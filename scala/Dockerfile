@@ -1,4 +1,4 @@
-FROM bobpace/devbox-dotfiles
+FROM bobpace/devbox-base
 MAINTAINER Bob Pace <bob.pace@gmail.com>
 
 # install add-apt-repository tool
@@ -27,13 +27,12 @@ RUN sudo apt-get update && \
 RUN echo 'debconf shared/accepted-oracle-license-v1-1 select true' | sudo debconf-set-selections
 RUN sudo apt-get install -y oracle-java7-set-default
 
-# install sbt 0.13.2
 # 1) first install old sbt 0.11.3 from typesafe (old one but comes with all dependencies)
-# 2) now that we have sbt we can upgrade it to 0.13.2
+# 2) now that we have sbt we can upgrade it to 0.13.6
 RUN sudo apt-get install -y sbt && \
-    sudo wget http://dl.bintray.com/sbt/debian/sbt-0.13.2.deb && \
-    sudo dpkg -i sbt-0.13.2.deb && \
-    sudo rm -f sbt-0.13.2.deb && \
+    sudo wget http://dl.bintray.com/sbt/debian/sbt-0.13.6.deb && \
+    sudo dpkg -i sbt-0.13.6.deb && \
+    sudo rm -f sbt-0.13.6.deb && \
     sudo sbt version
 
 CMD ["/bin/bash"]
