@@ -10,16 +10,18 @@ RUN apt-get update && \
 
 RUN useradd --create-home devuser && \
     chgrp -R devuser /usr/local && \
-    find /usr/local -type d | xargs chmod g+w && \
-    echo "devuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/devuser && \
+    find /usr/local -type d | xargs chmod g+w
+
+RUN git clone --recursive https://github.com/Valloric/YouCompleteMe /home/devuser/YouCompleteMe && \
+    /home/devuser/YouCompleteMe/install.sh --clang-completer
+
+RUN echo "devuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/devuser && \
+    echo "Defaults        env_keep+=SSH_AUTH_SOCK" >> /etc/sudoers.d/devuser && \
     chmod 0440 /etc/sudoers.d/devuser
 
 USER devuser
 ENV HOME /home/devuser
 WORKDIR /home/devuser
-
-RUN git clone --recursive https://github.com/Valloric/YouCompleteMe && \
-    ~/YouCompleteMe/install.sh --clang-completer
 
 #symlinks for dotfiles to be mounted into container via --volumes-from dotfiles
 RUN mkdir -p ~/devbox/dotfiles/.vim && \
