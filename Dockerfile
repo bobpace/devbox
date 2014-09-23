@@ -5,7 +5,7 @@ ENV TERM xterm-256color
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    curl git vim tmux zsh ssh sudo \
+    curl git vim tmux zsh sudo \
     build-essential cmake python-dev ca-certificates
 
 RUN useradd --create-home devuser && \
@@ -34,5 +34,8 @@ RUN mkdir -p ~/devbox/dotfiles/.vim && \
     ln -s ~/devbox/dotfiles/.zshrc ~/.zshrc && \
     touch ~/devbox/dotfiles/.gitconfig && \
     ln -s ~/devbox/dotfiles/.gitconfig ~/.gitconfig
+
+RUN sudo apt-get install -y --no-install-recommends ssh && \
+    mkdir ~/.ssh
 
 CMD ["/bin/zsh"]
