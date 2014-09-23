@@ -14,4 +14,4 @@ ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 # Define working directory.
 WORKDIR go
 
-CMD ["/bin/bash"]
+CMD ["/bin/zsh"]

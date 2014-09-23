@@ -1,13 +1,13 @@
 REPOSITORY := bobpace/devbox
-images = base home node scala go
+images = base dotfiles node scala go
 
-all: home node scala go
+all: dotfiles node scala go
 
 base:
 	@docker build -t $(REPOSITORY)-base .
 
-home: base
-	@cd home && docker build --no-cache -t $(REPOSITORY)-home .
+dotfiles: base
+	@cd dotfiles && docker build --no-cache -t $(REPOSITORY)-dotfiles .
 
 node: base
 	@cd node && docker build -t $(REPOSITORY)-node .
@@ -21,4 +21,4 @@ go: base
 clean:
 	@$(foreach image,$(images),docker rmi --force $(REPOSITORY)-$(image);)
 
-.PHONY: all base home node scala go clean
+.PHONY: all base dotfiles node scala go clean

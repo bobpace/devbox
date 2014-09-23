@@ -35,4 +35,4 @@ RUN sudo apt-get install -y sbt && \
     sudo rm -f sbt-0.13.6.deb && \
     sudo sbt version
 
-CMD ["/bin/bash"]
+CMD ["/bin/zsh"]
