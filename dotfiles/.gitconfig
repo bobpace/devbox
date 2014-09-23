@@ -1,0 +1,60 @@
+[user]
+  name = Bob Pace
+  email = bob.pace@gmail.com
+
+[core]
+  autocrlf = input
+
+[color]
+  ui = true
+  status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+
+[push]
+  default = tracking
+
+[alias]
+  fmerge = merge --ff-only
+  st = status -s
+  ci = commit
+  cia = commit --amend -C HEAD
+  ciara = cia -a --reset-author
+  co = checkout
+  df = diff
+  ds = diff --stat
+  di = diff --cached
+  dft = difftool
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative 
+  pr = remote prune origin
+  rv = remote -v
+  ro = remote show origin
+  fh = log -p --full-diff
+  ba = branch -a
+  bm = branch --merged
+  cob = checkout -b
+  new = log master..
+  rbc = rebase --continue
+  bm = branch --merged
+  stash-revert = "!git stash show -p | git apply -R"
+  stashki = stash save --keep-index
+  undo = reset HEAD^
+  unci = reset --soft HEAD@{1}
+
+[branch]
+  autosetupmerge = true
+
+[merge]
+  tool = vimdiff
+  keepBackup = false
+  conflictstyle = diff3
+
+[mergetool "vimdiff"]
+  keepBackup = false
+  keepTemporaries = false
+  prompt = false
+
+[diff]
+  tool = vimdiff
+  renames = copies
