@@ -1,0 +1,3 @@
+-sbt-create
+-ivy ~/.ivy2
+-Divy.home=~/.ivy2

@@ -2,19 +2,29 @@
 
 ## Installation
 
+By default makes only devbox and dotfiles
+
 ```
 make
 ```
 
+Make others if wanted
+
+```
+make nodebox
+make scalabox
+make gobox
+```
+
 Run a volume container for the dotfiles:
 
-    docker run --name dotfiles bobpace/devbox-dotfiles
+    docker run --name dotfiles bobpace/dotfiles
 
-Run one of the other dev boxes with --volumes-from dotfiles
+Run one of [devbox nodebox scalabox gobox] with --volumes-from dotfiles
 
-    docker run -it --rm --volumes-from dotfiles bobpace/devbox-node
+##Ssh keys for working with git
 
-Get ssh-agent working with your keys:
+Get ssh-agent working with your keys
 
     eval `ssh-agent -s`
     ssh-add ~/.ssh/*_rsa

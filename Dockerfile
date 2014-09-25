@@ -37,6 +37,8 @@ RUN mkdir -p ~/devbox/dotfiles/.vim && \
     touch ~/devbox/dotfiles/.gitconfig && \
     ln -s ~/devbox/dotfiles/.gitconfig ~/.gitconfig
 
+#if you are using boot2docker or otherwise using ssh to a docker host, do it with -A to pass through ssh keys
+#check keys with ssh-add -l to see they come through to new containers
 RUN sudo apt-get install -y --no-install-recommends ssh && \
     mkdir ~/.ssh
 

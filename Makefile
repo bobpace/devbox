@@ -1,24 +1,31 @@
-REPOSITORY := bobpace/devbox
-images = devbox dotfiles node scala go
+REPOSITORY := bobpace
+images = devbox dotfiles nodebox scalabox gobox
 
-all: dotfiles node scala go
+all: dotfiles
 
+#BASE
 devbox:
-	@docker build -t $(REPOSITORY) .
+	@docker build -t $(REPOSITORY)/devbox .
 
 dotfiles: devbox
-	@cd dotfiles && docker build --no-cache -t $(REPOSITORY)-dotfiles .
+	@cd dotfiles && docker build --no-cache -t $(REPOSITORY)/dotfiles .
 
-node: devbox
-	@cd node && docker build -t $(REPOSITORY)-node .
+#NODE
+nodebox: devbox
+	@cd nodebox && docker build -t $(REPOSITORY)/nodebox .
 
-scala: devbox
-	@cd scala && docker build -t $(REPOSITORY)-scala .
+#SCALA
+scalabox: devbox
+	@cd scalabox && docker build -t $(REPOSITORY)/scalabox .
 
-go: devbox
-	@cd go && docker build -t $(REPOSITORY)-go .
+ivy2:
+	@cd ivy2 && docker build -t $(REPOSITORY)/ivy2 .
+
+#GO
+gobox: devbox
+	@cd gobox && docker build -t $(REPOSITORY)/gobox .
 
 clean:
-	@$(foreach image,$(images),docker rmi --force $(REPOSITORY)-$(image);)
+	@$(foreach image,$(images),docker rmi --force $(REPOSITORY)/$(image);)
 
-.PHONY: all devbox dotfiles node scala go clean
+.PHONY: all devbox dotfiles nodebox scalabox ivy2 gobox clean

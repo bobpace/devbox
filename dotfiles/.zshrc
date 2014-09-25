@@ -82,3 +82,22 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 #Vi mode
 bindkey -v
+bindkey '^R' history-incremental-search-backward
+
+DOCKERSOCK=/var/run/docker.sock
+DOCKERPATH=$(which docker)
+SSHAUTHSOCKDIR=$(dirname $SSH_AUTH_SOCK)
+
+devbox() {
+    docker run -it --rm \
+      -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
+      -v $SSHAUTHSOCKDIR:$SSHAUTHSOCKDIR -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
+      --volumes-from dotfiles $@
+}
+
+run-activator() {
+  if [ -f ~/bin/activator ];
+  then
+    activator ui -Dhttp.address=0.0.0.0
+  fi
+}
