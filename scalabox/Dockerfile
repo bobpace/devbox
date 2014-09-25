@@ -40,6 +40,7 @@ ADD sbtopts /usr/share/sbt-launcher-packaging/conf/sbtopts
 
 RUN sbt version
 
-EXPOSE 8888
+#activator and default play port
+EXPOSE 8888 9000
 
 CMD ["/bin/zsh"]
