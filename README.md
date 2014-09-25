@@ -29,7 +29,7 @@ Get ssh-agent working with your keys
     eval `ssh-agent -s`
     ssh-add ~/.ssh/*_rsa
 
-Convenience script to run devbox:
+Convenience scripts:
 
     DOCKERSOCK=/var/run/docker.sock
     DOCKERPATH=$(which docker)
@@ -41,3 +41,19 @@ Convenience script to run devbox:
           -v $SSHAUTHSOCKDIR:$SSHAUTHSOCKDIR -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
           --volumes-from dotfiles $@
     }
+
+    samba() {
+      docker run --rm \
+        -v $DOCKERSOCK:/docker.sock -v $DOCKERPATH:/docker \
+        svendowideit/samba $@
+    }
+
+##Folder sharing directions from boot2docker
+
+    # Make a volume container (only need to do this once)
+    $ docker run -v /data --name my-data busybox true
+    # Share it using Samba (Windows file sharing)
+    $ docker run --rm -v /usr/local/bin/docker:/docker -v /var/run/docker.sock:/docker.sock svendowideit/samba my-data
+    # then find out the IP address of your Boot2Docker host
+    $ boot2docker ip
+    192.168.59.103

@@ -35,3 +35,6 @@ set noswapfile
 set suffixesadd+=.js,.cjsx,.coffee
 set exrc
 set secure
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode

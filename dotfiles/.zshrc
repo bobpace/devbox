@@ -89,10 +89,16 @@ DOCKERPATH=$(which docker)
 SSHAUTHSOCKDIR=$(dirname $SSH_AUTH_SOCK)
 
 devbox() {
-    docker run -it --rm \
-      -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
-      -v $SSHAUTHSOCKDIR:$SSHAUTHSOCKDIR -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
-      --volumes-from dotfiles $@
+  docker run -it --rm \
+    -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
+    -v $SSHAUTHSOCKDIR:$SSHAUTHSOCKDIR -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
+    --volumes-from dotfiles $@
+}
+
+samba() {
+  docker run --rm \
+    -v $DOCKERSOCK:/docker.sock -v $DOCKERPATH:/docker \
+    svendowideit/samba $@
 }
 
 run-activator() {
