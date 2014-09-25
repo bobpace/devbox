@@ -30,7 +30,7 @@ RUN mkdir ~/.ivy2
 
 RUN wget http://downloads.typesafe.com/typesafe-activator/1.2.10/typesafe-activator-1.2.10.zip && \
     unzip typesafe-activator-1.2.10.zip && \
-    rm -f /typesafe-activator-1.2.10.zip
+    rm -f typesafe-activator-1.2.10.zip
 
 RUN mkdir ~/bin && \
     ln -s ~/activator-1.2.10 ~/activator && \
