@@ -29,6 +29,8 @@ Get ssh-agent working with your keys
     eval `ssh-agent -s`
     ssh-add ~/.ssh/*_rsa
 
+If you are using boot2docker or otherwise using ssh to a docker host, do it with -A to pass through ssh keys
+
 Convenience scripts:
 
     DOCKERSOCK=/var/run/docker.sock
