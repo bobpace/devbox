@@ -34,6 +34,8 @@ RUN mkdir -p ~/devbox/dotfiles/.vim && \
     git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh && \
     touch ~/devbox/dotfiles/.zshrc && \
     ln -s ~/devbox/dotfiles/.zshrc ~/.zshrc && \
+    touch ~/devbox/dotfiles/devbox-scripts.sh && \
+    ln -s ~/devbox/dotfiles/devbox-scripts.sh ~/devbox-scripts.sh && \
     touch ~/devbox/dotfiles/.gitconfig && \
     ln -s ~/devbox/dotfiles/.gitconfig ~/.gitconfig
 

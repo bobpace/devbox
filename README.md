@@ -2,7 +2,7 @@
 
 ## Installation
 
-By default makes only devbox and dotfiles
+make devbox dotfiles and data
 
 ```
 make
@@ -12,7 +12,10 @@ Make others if wanted
 
 ```
 make nodebox
+
 make scalabox
+make sbtcache
+
 make gobox
 ```
 
@@ -20,7 +23,9 @@ Run a volume container for the dotfiles:
 
     docker run --name dotfiles bobpace/dotfiles
 
-Run one of [devbox nodebox scalabox gobox] with --volumes-from dotfiles
+Run one of [devbox nodebox scalabox gobox] with --volumes-from dotfiles.
+
+For convenience, you can use the scripts in devbox-scripts.sh to run containers with support to sudo docker commands and pass along any ssh keys you have added.
 
 ##Ssh keys for working with git
 
@@ -30,25 +35,6 @@ Get ssh-agent working with your keys
     ssh-add ~/.ssh/*_rsa
 
 If you are using boot2docker or otherwise using ssh to a docker host, do it with -A to pass through ssh keys
-
-Convenience scripts:
-
-    DOCKERSOCK=/var/run/docker.sock
-    DOCKERPATH=$(which docker)
-    SSHAUTHSOCKDIR=$(dirname $SSH_AUTH_SOCK)
-
-    devbox() {
-        docker run -it --rm \
-          -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
-          -v $SSHAUTHSOCKDIR:$SSHAUTHSOCKDIR -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
-          --volumes-from dotfiles $@
-    }
-
-    samba() {
-      docker run --rm \
-        -v $DOCKERSOCK:/docker.sock -v $DOCKERPATH:/docker \
-        svendowideit/samba $@
-    }
 
 ##Folder sharing directions from boot2docker
 
