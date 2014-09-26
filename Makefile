@@ -1,5 +1,5 @@
 REPOSITORY := bobpace
-images = devbox dotfiles nodebox scalabox gobox
+images = devbox dotfiles nodebox scalabox sbtcache gobox
 
 all: dotfiles
 
@@ -18,8 +18,8 @@ nodebox: devbox
 scalabox: devbox
 	@cd scalabox && docker build -t $(REPOSITORY)/scalabox .
 
-ivy2:
-	@cd ivy2 && docker build -t $(REPOSITORY)/ivy2 .
+sbtcache:
+	@cd sbtcache && docker build -t $(REPOSITORY)/sbtcache .
 
 #GO
 gobox: devbox
@@ -28,4 +28,4 @@ gobox: devbox
 clean:
 	@$(foreach image,$(images),docker rmi --force $(REPOSITORY)/$(image);)
 
-.PHONY: all devbox dotfiles nodebox scalabox ivy2 gobox clean
+.PHONY: all devbox dotfiles nodebox scalabox sbtcache gobox clean

@@ -38,8 +38,6 @@ RUN mkdir ~/bin && \
 
 ADD sbtopts /usr/share/sbt-launcher-packaging/conf/sbtopts
 
-RUN sbt version
-
 #activator and default play port
 EXPOSE 8888 9000
 
