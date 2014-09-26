@@ -36,6 +36,6 @@ rmi-untagged() {
   docker rmi $(docker images -q --filter "dangling=true")
 }
 
-rm-last {
+rm-last() {
   docker rm $(docker ps -lq)
 }
