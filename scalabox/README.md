@@ -9,6 +9,6 @@ Keep sbt dependencies you download in a shared cache so you can easily stop and 
 
 ## Typesafe Activator
 
-run-activator bash script:
+runactivator bash script:
 
     activator ui -Dhttp.address=0.0.0.0

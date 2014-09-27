@@ -2,11 +2,11 @@
 
 Run with dynamic port
 
-    devbox -P --name node bobpace/nodebox
+    devbox -P --name nodebox bobpace/nodebox
 
 example script for webpack-dev-server (can place in package.json scripts)
 
-    DEVSERVERPORT=$(sudo docker port node 8080 | sed -e 's/.*://') webpack-dev-server --colors --hot
+    DEVSERVERPORT=$(sudo docker port nodebox 8080 | sed -e 's/.*://') webpack-dev-server --colors --hot
 
 example webpack.config.js
 
