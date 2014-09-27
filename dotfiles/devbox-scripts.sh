@@ -25,17 +25,17 @@ samba() {
     svendowideit/samba $@
 }
 
-run-activator() {
+runactivator() {
   if [ -f ~/bin/activator ];
   then
     activator ui -Dhttp.address=0.0.0.0
   fi
 }
 
-rmi-untagged() {
+rmiuntagged() {
   docker rmi $(docker images -q --filter "dangling=true")
 }
 
-rm-last() {
+rmlast() {
   docker rm $(docker ps -lq)
 }
