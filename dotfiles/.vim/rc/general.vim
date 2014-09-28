@@ -38,3 +38,9 @@ set secure
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
+set shellpipe=>
+set virtualedit=block
+set splitbelow
+set splitright
+set linebreak
+set t_ti= t_te=

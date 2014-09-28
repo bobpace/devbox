@@ -5,7 +5,7 @@ ENV TERM xterm-256color
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    curl git vim tmux zsh sudo \
+    curl git vim tmux zsh sudo silversearcher-ag \
     build-essential cmake python-dev ca-certificates
 
 RUN useradd --create-home devuser && \
