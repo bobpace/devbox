@@ -25,6 +25,7 @@ nnoremap Q <nop>
 "copy paste between tmux panes in different vim sessions without +clipboard
 map <C-c> y:e ~/.vimbuffer<CR>VGP:w!<CR>:Bclose<CR>
 map <C-p> :r ~/.vimbuffer<CR>
+vmap <C-p> x:r ~/.vimbuffer<CR>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>

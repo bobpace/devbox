@@ -19,6 +19,10 @@ scalabox() {
   devbox --volumes-from sbtcache --name scalabox $@ bobpace/scalabox
 }
 
+gobox() {
+  devbox --volumes-from gopath --name gobox $@ bobpace/gobox
+}
+
 samba() {
   docker run --rm \
     -v $DOCKERSOCK:/docker.sock -v $DOCKERPATH:/docker \

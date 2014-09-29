@@ -12,6 +12,9 @@ ENV GOPATH $HOME/go
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 # Define working directory.
-WORKDIR go
+WORKDIR ~/go
+
+#goconvey port
+EXPOSE 8080
 
 CMD ["/bin/zsh"]
