@@ -1,0 +1,1 @@
+NeoBundle 'edkolev/tmuxline.vim'

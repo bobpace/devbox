@@ -2,9 +2,7 @@ FROM bobpace/devbox
 MAINTAINER Bob Pace <bob.pace@gmail.com>
 
 USER root
-RUN apt-get install -y \
-    software-properties-common python-software-properties wget unzip && \
-    add-apt-repository ppa:webupd8team/java
+RUN add-apt-repository ppa:webupd8team/java
 
 RUN wget http://apt.typesafe.com/repo-deb-build-0002.deb && \
     dpkg -i repo-deb-build-0002.deb && \

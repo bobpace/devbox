@@ -5,8 +5,15 @@ ENV TERM xterm-256color
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    curl git vim tmux zsh sudo silversearcher-ag \
-    build-essential cmake python-dev ca-certificates
+    curl git wget unzip sudo \
+    zsh vim silversearcher-ag \
+    build-essential cmake python-dev ca-certificates \
+    python-software-properties software-properties-common
+
+#tmux 1.9a
+RUN add-apt-repository ppa:pi-rho/dev && \
+    apt-get update && \
+    apt-get install -y tmux=1.9a-1~ppa1~t
 
 RUN useradd --create-home devuser && \
     chgrp -R devuser /usr/local && \
@@ -43,5 +50,7 @@ RUN mkdir -p ~/devbox/dotfiles/.vim && \
 #check keys with ssh-add -l to see they come through to new containers
 RUN sudo apt-get install -y --no-install-recommends ssh && \
     mkdir ~/.ssh
+
+ENV LANG en_US.UTF-8
 
 CMD ["/bin/zsh"]
