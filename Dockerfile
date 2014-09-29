@@ -15,7 +15,7 @@ RUN add-apt-repository ppa:pi-rho/dev && \
     apt-get update && \
     apt-get install -y tmux=1.9a-1~ppa1~t
 
-RUN useradd --create-home devuser && \
+RUN useradd --create-home -G users devuser && \
     chgrp -R devuser /usr/local && \
     find /usr/local -type d | xargs chmod g+w
 
