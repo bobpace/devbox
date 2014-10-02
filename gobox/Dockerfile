@@ -15,9 +15,6 @@ ENV GOROOT /usr/local/go
 ENV GOPATH $HOME/go
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
-# Define working directory.
-WORKDIR ~/go
-
 #goconvey port
 EXPOSE 8080
 

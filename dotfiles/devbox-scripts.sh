@@ -20,7 +20,7 @@ scalabox() {
 }
 
 gobox() {
-  devbox --volumes-from gopath --name gobox $@ bobpace/gobox
+  devbox --volumes-from gopath --name gobox -w /home/devuser/go $@ bobpace/gobox
 }
 
 samba() {
