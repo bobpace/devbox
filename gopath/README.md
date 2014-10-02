@@ -1,6 +1,6 @@
 # gopath
 
-Exposes ~/go as a volume container
+Exposes /home/devuser/go as a volume container
 
     docker run --name gopath bobpace/gopath
 

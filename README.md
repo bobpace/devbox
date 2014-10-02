@@ -17,6 +17,7 @@ make scalabox
 make sbtcache
 
 make gobox
+make gopath
 ```
 
 Run a volume container for the dotfiles:
@@ -45,3 +46,15 @@ If you are using boot2docker or otherwise using ssh to a docker host, do it with
     # then find out the IP address of your Boot2Docker host
     $ boot2docker ip
     192.168.59.103
+
+##Postgres and dbext.vim plugin usage
+
+Start a postgres instance:
+
+    docker run --name some-postgres -d postgres
+
+Run a box with --link some-postgres:postgres
+
+    nodebox --link some-postgres:postgres
+
+There is a profile set up for dbext.vim that has the postgres connection information for use with a linked postgres container
