@@ -8,7 +8,7 @@ devbox() {
   docker run -it --rm \
     -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
     -v $SSHAUTHSOCKDIR:$SSHAUTHSOCKDIR -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
-    --volumes-from dotfiles --volumes-from data -P -w /home/devuser/data $@
+    --volumes-from dotfiles --volumes-from data -P $@
 }
 
 nodebox() {

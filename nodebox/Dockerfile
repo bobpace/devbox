@@ -1,8 +1,16 @@
 FROM bobpace/devbox
 MAINTAINER Bob Pace <bob.pace@gmail.com>
 
-RUN sudo apt-get install -y --no-install-recommends nodejs npm && \
-    sudo ln -s /usr/bin/nodejs /usr/bin/node
+USER root
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    nodejs \
+    npm \
+    && ln -s /usr/bin/nodejs /usr/bin/node \
+    && rm -rf /var/lib/apt/lists/*
+
+USER devuser
 
 #webpack-dev-server default port
 EXPOSE 8080
