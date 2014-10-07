@@ -18,14 +18,22 @@ RUN apt-get update \
     ssh \
     sudo \
     unzip \
-    vim \
+    vim-gtk \
     wget \
+    xclip \
     zsh \
     && rm -rf /var/lib/apt/lists/*
 
-#"en_US.UTF-8" locale
-RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-ENV LANG en_US.utf8
+#Timezone
+run cp /usr/share/zoneinfo/US/Mountain /etc/localtime
+
+#UTF-8
+RUN dpkg-reconfigure locales \
+    && locale-gen en_US.UTF-8 \
+    && /usr/sbin/update-locale LANG=en_US.UTF-8
+
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 
 #tmux 1.9a
 RUN add-apt-repository ppa:pi-rho/dev \
