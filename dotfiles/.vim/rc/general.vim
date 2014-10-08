@@ -11,11 +11,7 @@ set softtabstop=2
 set shiftwidth=2
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-"if exists('$TMUX')
-  "set clipboard=
-"else
-set clipboard=unnamed      "sync with OS clipboard
-"endif
+set clipboard=unnamedplus      "sync with x11 forwarded clipboard
 set hidden                   "allow buffer switching without saving
 set autoread 
 set showcmd
