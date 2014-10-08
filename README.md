@@ -58,3 +58,4 @@ Run a box with --link some-postgres:postgres
     nodebox --link some-postgres:postgres
 
 There is a profile set up for dbext.vim that has the postgres connection information for use with a linked postgres container
+

@@ -12,6 +12,13 @@ devbox() {
     --volumes-from dotfiles --volumes-from data -P $@
 }
 
+x11dockerhost() {
+  docker run -d \
+    -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
+    --volumes-from dotfiles --volumes-from data -p 2222:22 \
+    --name x11dockerhost $@ bobpace/x11dockerhost
+}
+
 nodebox() {
   devbox --name nodebox $@ bobpace/nodebox
 }
