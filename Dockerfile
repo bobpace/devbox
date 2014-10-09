@@ -46,7 +46,7 @@ RUN git clone --recursive https://github.com/Valloric/YouCompleteMe /usr/local/l
 
 RUN useradd --create-home -G users devuser \
     && chgrp -R devuser /usr/local \
-    && find /usr/local -type d | xargs chmod g+w
+    && find /usr/local -type d | xargs chmod g+w \
     && chsh -s /bin/zsh devuser
 
 RUN echo "devuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/devuser \
