@@ -15,6 +15,10 @@ devbox() {
 x11dockerhost() {
   docker run -d \
     -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
+    #mount /tmp so that ssh agent sockets created directly on x11dockerhost 
+    #will actually exist at /tmp where the docker service is running 
+    #so that the -v $SSHAUTHSOCKDIR mounting to forward the agent to containers can work
+    -v /tmp:/tmp \
     --volumes-from dotfiles --volumes-from data -p 2222:22 \
     --name x11dockerhost $@ bobpace/x11dockerhost
 }
