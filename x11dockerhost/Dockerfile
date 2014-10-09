@@ -1,7 +1,7 @@
 FROM bobpace/devbox
 MAINTAINER Bob Pace <bob.pace@gmail.com>
 
-RUN curl -w "\n" https://github.com/bobpace.keys >> /home/devuser/.ssh/authorized_keys
+RUN curl -w "\n" https://github.com/bobpace.keys >> /home/devuser/.ssh/authorized_keys \
     && sudo chmod 600 /home/devuser/.ssh/authorized_keys
 
 #fix problem with launching tmux while under a shell that has stty erase = ^H
