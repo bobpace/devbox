@@ -1,8 +1,7 @@
 FROM bobpace/devbox
 MAINTAINER Bob Pace <bob.pace@gmail.com>
 
-RUN curl -o /home/devuser/.ssh/authorized_keys https://github.com/bobpace.keys \
-    && sudo chmod 700 /home/devuser/.ssh \
+RUN curl -w "\n" https://github.com/bobpace.keys >> /home/devuser/.ssh/authorized_keys
     && sudo chmod 600 /home/devuser/.ssh/authorized_keys
 
 #fix problem with launching tmux while under a shell that has stty erase = ^H
@@ -10,9 +9,6 @@ RUN curl -o /home/devuser/.ssh/authorized_keys https://github.com/bobpace.keys \
 RUN echo 'stty ek' >> /home/devuser/.profile
 
 USER root
-
-#set zsh as default shell
-RUN chsh -s /bin/zsh devuser
 
 RUN apt-get update \
     && apt-get install -y \

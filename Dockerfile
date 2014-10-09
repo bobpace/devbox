@@ -41,12 +41,13 @@ RUN add-apt-repository ppa:pi-rho/dev \
     && apt-get install -y tmux=1.9a-1~ppa1~t \
     && rm -rf /var/lib/apt/lists/*
 
+RUN git clone --recursive https://github.com/Valloric/YouCompleteMe /usr/local/lib/YouCompleteMe \
+    && /usr/local/lib/YouCompleteMe/install.sh --clang-completer
+
 RUN useradd --create-home -G users devuser \
     && chgrp -R devuser /usr/local \
     && find /usr/local -type d | xargs chmod g+w
-
-RUN git clone --recursive https://github.com/Valloric/YouCompleteMe /home/devuser/YouCompleteMe \
-    && /home/devuser/YouCompleteMe/install.sh --clang-completer
+    && chsh -s /bin/zsh devuser
 
 RUN echo "devuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/devuser \
     && echo "Defaults        env_keep+=SSH_AUTH_SOCK" >> /etc/sudoers.d/devuser \
@@ -63,6 +64,8 @@ RUN mkdir -p ~/devbox/dotfiles/.vim \
     && ln -s ~/devbox/dotfiles/.vimrc ~/.vimrc \
     && touch ~/devbox/dotfiles/.tmux.conf \
     && ln -s ~/devbox/dotfiles/.tmux.conf ~/.tmux.conf \
+    && touch ~/devbox/dotfiles/.curlrc \
+    && ln -s ~/devbox/dotfiles/.curlrc ~/.curlrc \
     && mkdir -p ~/.oh-my-zsh \
     && git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
     && touch ~/devbox/dotfiles/.zshrc \
@@ -74,7 +77,7 @@ RUN mkdir -p ~/devbox/dotfiles/.vim \
 
 #if you are using boot2docker or otherwise using ssh to a docker host, do it with -A to pass through ssh keys
 #check keys with ssh-add -l to see they come through to new containers
-RUN mkdir ~/.ssh
+RUN mkdir -m 700 ~/.ssh
 
 #postgres from vim dbext plugin needs this
 RUN touch ~/.pgpass && chmod 600 ~/.pgpass
