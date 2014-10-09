@@ -1,5 +1,6 @@
 #!/bin/sh
 
+#Docker
 DOCKERSOCK=/var/run/docker.sock
 DOCKERPATH=$(which docker)
 SSHAUTHSOCKDIR=$(dirname $SSH_AUTH_SOCK)
@@ -12,12 +13,12 @@ devbox() {
     --volumes-from dotfiles --volumes-from data -P $@
 }
 
+#mount /tmp so that ssh agent sockets created directly on x11dockerhost 
+#will actually exist at /tmp where the docker service is running 
+#so that the -v $SSHAUTHSOCKDIR mounting to forward the agent to containers can work
 x11dockerhost() {
   docker run -d \
     -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
-    #mount /tmp so that ssh agent sockets created directly on x11dockerhost 
-    #will actually exist at /tmp where the docker service is running 
-    #so that the -v $SSHAUTHSOCKDIR mounting to forward the agent to containers can work
     -v /tmp:/tmp \
     --volumes-from dotfiles --volumes-from data -p 2222:22 \
     --name x11dockerhost $@ bobpace/x11dockerhost
@@ -41,6 +42,15 @@ samba() {
     svendowideit/samba $@
 }
 
+rmiuntagged() {
+  docker rmi $(docker images -q --filter "dangling=true")
+}
+
+rmlast() {
+  docker rm $(docker ps -lq)
+}
+
+#Typesafe activator
 runactivator() {
   if [ -f ~/bin/activator ];
   then
@@ -48,10 +58,7 @@ runactivator() {
   fi
 }
 
-rmiuntagged() {
-  docker rmi $(docker images -q --filter "dangling=true")
-}
-
-rmlast() {
-  docker rm $(docker ps -lq)
+#X11
+testxclip() {
+  echo Xclip works! | xclip && xclip -o | xargs echo
 }
