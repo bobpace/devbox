@@ -10,7 +10,11 @@ devbox() {
     -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
     -v $SSHAUTHSOCKDIR:$SSHAUTHSOCKDIR -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
     -e DISPLAY=$DISPLAY \
-    --volumes-from dotfiles --volumes-from data -P $@
+    --volumes-from home \
+    --volumes-from dotfiles \
+    --volumes-from data \
+    --link x11dockerhost:x11dockerhost \
+    -P $@
 }
 
 #mount /tmp so that ssh agent sockets created directly on x11dockerhost 
@@ -20,20 +24,41 @@ x11dockerhost() {
   docker run -d \
     -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
     -v /tmp:/tmp \
-    --volumes-from dotfiles --volumes-from data -p 2222:22 \
-    --name x11dockerhost $@ bobpace/x11dockerhost
+    --volumes-from home \
+    --volumes-from dotfiles \
+    --volumes-from data \
+    -p 2222:22 \
+    -h x11dockerhost \
+    --name x11dockerhost \
+    $@ bobpace/x11dockerhost
+}
+
+killx11() {
+  docker stop x11dockerhost && docker rm x11dockerhost
 }
 
 nodebox() {
-  devbox --name nodebox $@ bobpace/nodebox
+  devbox \
+    -h nodebox \
+    --name nodebox \
+    $@ bobpace/nodebox
 }
 
 scalabox() {
-  devbox --volumes-from sbtcache --name scalabox $@ bobpace/scalabox
+  devbox \
+    --volumes-from sbtcache \
+    -h scalabox \
+    --name scalabox \
+    $@ bobpace/scalabox
 }
 
 gobox() {
-  devbox --volumes-from gopath --name gobox -w /home/devuser/go $@ bobpace/gobox
+  devbox \
+    --volumes-from gopath \
+    -w /home/devuser/go \
+    -h gobox \
+    --name gobox \
+    $@ bobpace/gobox
 }
 
 samba() {

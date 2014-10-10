@@ -1,17 +1,27 @@
 REPOSITORY := bobpace
-images = devbox dotfiles data nodebox scalabox sbtcache gobox x11dockerhost gopath
+images = x11dockerhost home dotfiles data nodebox scalabox sbtcache gobox gopath devbox
 
-all: dotfiles data x11dockerhost
+all: x11dockerhost home dotfiles data
 
 #BASE
 devbox:
 	@docker build -t $(REPOSITORY)/devbox .
 
+devbox-no-cache:
+	@docker build --no-cache -t $(REPOSITORY)/devbox .
+
 dotfiles: devbox
 	@cd dotfiles && docker build --no-cache -t $(REPOSITORY)/dotfiles .
 
+home:
+	@cd home && docker build -t $(REPOSITORY)/home .
+
 data:
 	@cd data && docker build -t $(REPOSITORY)/data .
+
+#DOCKER HOST
+x11dockerhost:
+	@cd x11dockerhost && docker build -t $(REPOSITORY)/x11dockerhost .
 
 #NODE
 nodebox: devbox
@@ -31,11 +41,7 @@ gobox: devbox
 gopath:
 	@cd gopath && docker build -t $(REPOSITORY)/gopath .
 
-#DOCKER HOST
-x11dockerhost:
-	@cd x11dockerhost && docker build -t $(REPOSITORY)/x11dockerhost .
-
 clean:
 	@$(foreach image,$(images),docker rmi --force $(REPOSITORY)/$(image);)
 
-.PHONY: all devbox dotfiles data nodebox scalabox sbtcache gobox gopath x11dockerhost clean
+.PHONY: all devbox devbox-no-cache dotfiles home data nodebox scalabox sbtcache gobox gopath x11dockerhost clean

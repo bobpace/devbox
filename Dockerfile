@@ -20,6 +20,7 @@ RUN apt-get update \
     unzip \
     vim-gtk \
     wget \
+    xauth \
     xclip \
     zsh \
     && rm -rf /var/lib/apt/lists/*
@@ -56,30 +57,5 @@ RUN echo "devuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/devuser \
 USER devuser
 ENV HOME /home/devuser
 WORKDIR /home/devuser
-
-#symlinks for dotfiles to be mounted into container via --volumes-from dotfiles
-RUN mkdir -p ~/devbox/dotfiles/.vim \
-    && ln -s ~/devbox/dotfiles/.vim ~/.vim \
-    && touch ~/devbox/dotfiles/.vimrc \
-    && ln -s ~/devbox/dotfiles/.vimrc ~/.vimrc \
-    && touch ~/devbox/dotfiles/.tmux.conf \
-    && ln -s ~/devbox/dotfiles/.tmux.conf ~/.tmux.conf \
-    && touch ~/devbox/dotfiles/.curlrc \
-    && ln -s ~/devbox/dotfiles/.curlrc ~/.curlrc \
-    && mkdir -p ~/.oh-my-zsh \
-    && git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
-    && touch ~/devbox/dotfiles/.zshrc \
-    && ln -s ~/devbox/dotfiles/.zshrc ~/.zshrc \
-    && touch ~/devbox/dotfiles/devbox-scripts.sh \
-    && ln -s ~/devbox/dotfiles/devbox-scripts.sh ~/devbox-scripts.sh \
-    && touch ~/devbox/dotfiles/.gitconfig \
-    && ln -s ~/devbox/dotfiles/.gitconfig ~/.gitconfig
-
-#if you are using boot2docker or otherwise using ssh to a docker host, do it with -A to pass through ssh keys
-#check keys with ssh-add -l to see they come through to new containers
-RUN mkdir -m 700 ~/.ssh
-
-#postgres from vim dbext plugin needs this
-RUN touch ~/.pgpass && chmod 600 ~/.pgpass
 
 CMD ["/bin/zsh"]
