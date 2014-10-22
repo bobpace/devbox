@@ -3,11 +3,9 @@ MAINTAINER Bob Pace <bob.pace@gmail.com>
 
 USER root
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    nodejs \
-    npm \
-    && ln -s /usr/bin/nodejs /usr/bin/node \
+RUN add-apt-repository ppa:chris-lea/node.js-devel \
+    && apt-get update \
+    && apt-get install -y nodejs=0.11.13-1chl1~trusty1 \
     && rm -rf /var/lib/apt/lists/*
 
 USER devuser
