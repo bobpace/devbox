@@ -33,12 +33,9 @@ USER devuser
 RUN mkdir ~/.ivy2
 
 RUN wget http://downloads.typesafe.com/typesafe-activator/1.2.10/typesafe-activator-1.2.10.zip \
-    && unzip typesafe-activator-1.2.10.zip \
-    && rm -f typesafe-activator-1.2.10.zip
-
-RUN mkdir ~/bin \
-    && ln -s ~/activator-1.2.10 ~/activator \
-    && ln -s ~/activator/activator ~/bin/activator
+    && unzip typesafe-activator-1.2.10.zip -d /usr/local/lib \
+    && rm -f typesafe-activator-1.2.10.zip \
+    && ln -s /usr/local/lib/activator-1.2.10/activator /usr/local/bin/activator
 
 ADD sbtopts /usr/share/sbt-launcher-packaging/conf/sbtopts
 

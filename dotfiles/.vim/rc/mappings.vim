@@ -29,3 +29,6 @@ vmap <C-p> x:r ~/.vimbuffer<CR>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
+
+" switch to last open buffer
+nnoremap <leader><leader> :b#<CR>

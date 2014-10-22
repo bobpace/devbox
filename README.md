@@ -20,13 +20,14 @@ make gobox
 make gopath
 ```
 
-Run a volume container for the dotfiles:
+Run a volume container for home and dotfiles:
 
+    docker run --name home bobpace/home
     docker run --name dotfiles bobpace/dotfiles
 
-Run one of [devbox nodebox scalabox gobox] with --volumes-from dotfiles.
+Run one of [devbox nodebox scalabox gobox] with --volumes-from home and --volumes-from dotfiles.
 
-For convenience, you can use the scripts in devbox-scripts.sh to run containers with support to sudo docker commands and pass along any ssh keys you have added.
+The shell scripts in devbox-scripts.sh will pass along the docker socket, ssh agent, and X11 forwarding to a child container.
 
 ##Ssh keys for working with git
 
@@ -35,7 +36,7 @@ Get ssh-agent working with your keys
     eval `ssh-agent -s`
     ssh-add ~/.ssh/*_rsa
 
-If you are using boot2docker or otherwise using ssh to a docker host, do it with -A to pass through ssh keys
+If you are using boot2docker or otherwise using ssh to a docker host, do it with -A to pass through ssh keys and -X for clipboard support through X11.
 
 ##Folder sharing directions from boot2docker
 

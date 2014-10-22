@@ -19,7 +19,6 @@ ie:
     Port 2222
     ForwardAgent yes
     ForwardX11 yes
-    ForwardX11Trusted yes
 
 Start the x11dockerhost container and SSH directly into it from your host
 

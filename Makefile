@@ -41,6 +41,10 @@ gobox: devbox
 gopath:
 	@cd gopath && docker build -t $(REPOSITORY)/gopath .
 
+#Haskell
+haskellbox: devbox
+	@cd haskellbox && docker build -t $(REPOSITORY)/haskellbox .
+
 clean:
 	@$(foreach image,$(images),docker rmi --force $(REPOSITORY)/$(image);)
 

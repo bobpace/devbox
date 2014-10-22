@@ -77,10 +77,7 @@ rmlast() {
 
 #Typesafe activator
 runactivator() {
-  if [ -f ~/bin/activator ];
-  then
-    activator ui -Dhttp.address=0.0.0.0
-  fi
+  activator ui -Dhttp.address=0.0.0.0
 }
 
 #X11
