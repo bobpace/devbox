@@ -5,7 +5,7 @@ USER root
 
 RUN add-apt-repository ppa:chris-lea/node.js-devel \
     && apt-get update \
-    && apt-get install -y nodejs=0.11.13-1chl1~trusty1 \
+    && apt-get install -y nodejs=0.11.14-1chl1~trusty1 \
     && rm -rf /var/lib/apt/lists/*
 
 USER devuser
