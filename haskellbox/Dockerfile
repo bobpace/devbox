@@ -37,7 +37,7 @@ RUN apt-get update \
     && apt-get install ${OPTS_APT} \
     alex-"${VERSION_ALEX}" \
     cabal-install-"${VERSION_CABAL}" \
-    happy-"${VERSION_HAPPY}"
+    happy-"${VERSION_HAPPY}" \
     && rm -rf /var/lib/apt/lists/*
 
 ## haskell package versions; can be overriden via context hacks
