@@ -84,3 +84,8 @@ runactivator() {
 testxclip() {
   echo Xclip works! | xclip && xclip -o | xargs echo
 }
+
+#fixes time drift on boot2docker vm
+fixtime() {
+  sudo ntpclient -s -h pool.ntp.org
+}

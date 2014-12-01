@@ -49,6 +49,9 @@ haskellbox: devbox
 postgres:
 	@cd postgres && docker build -t $(REPOSITORY)/postgres .
 
+monobox: devbox
+	@cd monobox && docker build -t $(REPOSITORY)/monobox .
+
 clean:
 	@$(foreach image,$(images),docker rmi --force $(REPOSITORY)/$(image);)
 
