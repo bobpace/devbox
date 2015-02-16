@@ -40,3 +40,4 @@ set splitbelow
 set splitright
 set linebreak
 set t_ti= t_te=
+au BufRead *.spark set filetype=html

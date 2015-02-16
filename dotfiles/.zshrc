@@ -88,3 +88,10 @@ if [ -f ~/devbox-scripts.sh ];
 then
   source ~/devbox-scripts.sh
 fi
+
+if [ -f ~/work-scripts.sh ];
+then
+  source ~/work-scripts.sh
+fi
+
+alias node='node --harmony'

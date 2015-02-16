@@ -13,8 +13,8 @@ set foldmethod=syntax                               "fold via syntax of files
 set foldlevelstart=99                               "open all folds by default
 let g:xml_syntax_folding=1                          "enable xml folding
 
-set timeoutlen=300                                  "mapping timeout
-set ttimeoutlen=50                                  "keycode timeout
+set timeoutlen=200
+set ttimeoutlen=200
 
 set mouse=a                                         "enable mouse
 set mousehide                                       "hide when characters are typed

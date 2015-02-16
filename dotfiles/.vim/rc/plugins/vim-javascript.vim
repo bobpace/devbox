@@ -1,0 +1,1 @@
+NeoBundle 'pangloss/vim-javascript'

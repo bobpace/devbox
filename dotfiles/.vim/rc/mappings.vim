@@ -17,15 +17,10 @@ nnoremap n nzz
 nnoremap } }zz
 
 "find all occurences of word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :grep! "\b<cfile>\b"<CR>:cw<CR>
 
 nnoremap <F1> <nop>
 nnoremap Q <nop>
-
-"copy paste between tmux panes in different vim sessions without +clipboard
-map <C-c> y:e ~/.vimbuffer<CR>VGP:w!<CR>:Bclose<CR>
-map <C-p> :r ~/.vimbuffer<CR>
-vmap <C-p> x:r ~/.vimbuffer<CR>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>

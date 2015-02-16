@@ -1,0 +1,1 @@
+NeoBundle 'mxw/vim-jsx'
