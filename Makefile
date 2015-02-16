@@ -52,6 +52,9 @@ postgres:
 monobox: devbox
 	@cd monobox && docker build -t $(REPOSITORY)/monobox .
 
+octavebox: devbox
+	@cd octavebox && docker build -t ${REPOSITORY}/octavebox .
+
 clean:
 	@$(foreach image,$(images),docker rmi --force $(REPOSITORY)/$(image);)
 
