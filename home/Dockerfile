@@ -8,6 +8,8 @@ RUN mkdir -p ~/devbox/dotfiles/.vim \
     && ln -s ~/devbox/dotfiles/.vimrc ~/.vimrc \
     && touch ~/devbox/dotfiles/.tmux.conf \
     && ln -s ~/devbox/dotfiles/.tmux.conf ~/.tmux.conf \
+    && touch ~/devbox/dotfiles/.octaverc \
+    && ln -s ~/devbox/dotfiles/.octaverc ~/.octaverc \
     && touch ~/devbox/dotfiles/.curlrc \
     && ln -s ~/devbox/dotfiles/.curlrc ~/.curlrc \
     && mkdir -p ~/.oh-my-zsh \
