@@ -3,9 +3,9 @@ MAINTAINER Bob Pace <bob.pace@gmail.com>
 
 USER root
 
-RUN add-apt-repository ppa:chris-lea/node.js-devel \
-    && apt-get update \
-    && apt-get install -y nodejs=0.11.14-1chl1~trusty1 \
+# Note the new setup script name for Node.js v0.12
+RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
+    && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 USER devuser
