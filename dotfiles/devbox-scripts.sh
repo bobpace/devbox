@@ -68,6 +68,13 @@ octavebox() {
     $@ bobpace/octavebox
 }
 
+monobox() {
+  devbox \
+    -h monobox \
+    --name monobox \
+    $@ bobpace/monobox
+}
+
 samba() {
   docker run --rm \
     -v $DOCKERSOCK:/docker.sock -v $DOCKERPATH:/docker \

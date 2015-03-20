@@ -95,3 +95,5 @@ then
 fi
 
 alias node='node --harmony'
+
+[ -s "/home/devuser/.k/kvm/kvm.sh" ] && . "/home/devuser/.k/kvm/kvm.sh" # Load kvm

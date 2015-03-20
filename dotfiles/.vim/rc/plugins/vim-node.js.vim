@@ -1,1 +1,1 @@
-NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript', 'coffee']}}
+NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript', 'coffee', 'jsx']}}
