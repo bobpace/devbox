@@ -4,7 +4,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nnoremap <Space> :nohlsearch<CR>
-nnoremap <leader>l :set nonumber!<CR>
 
 "make Y behave like C and D
 nnoremap Y y$

@@ -1,4 +1,4 @@
 NeoBundle 'ervandew/supertab'
 
-" Helps with YCM + ultisnips integration
-let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"

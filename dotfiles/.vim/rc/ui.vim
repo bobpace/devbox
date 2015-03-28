@@ -8,6 +8,7 @@ set number
 set lazyredraw
 set laststatus=2
 set noshowmode
+set noshowmatch
 set foldenable                                      "enable folds by default
 set foldmethod=syntax                               "fold via syntax of files
 set foldlevelstart=99                               "open all folds by default

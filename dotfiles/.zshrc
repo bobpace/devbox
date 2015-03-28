@@ -89,11 +89,15 @@ then
   source ~/devbox-scripts.sh
 fi
 
-if [ -f ~/work-scripts.sh ];
+if [ -f ~/data/work-scripts.sh ];
 then
-  source ~/work-scripts.sh
+  source ~/data/work-scripts.sh
 fi
 
 alias node='node --harmony'
+
+paket() {
+  mono .paket/paket.exe $@
+}
 
 [ -s "/home/devuser/.k/kvm/kvm.sh" ] && . "/home/devuser/.k/kvm/kvm.sh" # Load kvm
