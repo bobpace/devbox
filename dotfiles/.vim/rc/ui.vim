@@ -1,6 +1,7 @@
 set encoding=utf-8
-set background=light
+set background=dark
 let g:solarized_termcolors=256
+let g:solarized_termtrans=1
 silent! colorscheme solarized
 set showmatch                                       "automatically highlight matching braces/brackets/etc.
 set matchtime=2                                     "tens of a second to show matching parentheses
