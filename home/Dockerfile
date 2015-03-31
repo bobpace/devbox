@@ -34,6 +34,11 @@ RUN touch ~/.pgpass && chmod 600 ~/.pgpass
 #without fix can no longer use the control H key binding inside vim or tmux
 RUN echo 'stty ek' >> ~/.profile
 
+#grunt-init csharp
+RUN mkdir ~/.grunt-init \
+  && git clone -b paket \
+  https://github.com/bobpace/grunt-init-csharpsolution ~/.grunt-init/csharp
+
 VOLUME /home/devuser
 
 CMD ["true"]

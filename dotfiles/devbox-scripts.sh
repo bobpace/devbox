@@ -4,11 +4,13 @@
 DOCKERSOCK=/var/run/docker.sock
 DOCKERPATH=$(which docker)
 SSHAUTHSOCKDIR=$(dirname $SSH_AUTH_SOCK)
+USERFOLDER=/Users/rpace
 
 devbox() {
   docker run -it --rm \
     -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
     -v $SSHAUTHSOCKDIR:$SSHAUTHSOCKDIR -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
+    -v $USERFOLDER:$USERFOLDER \
     -e DISPLAY=$DISPLAY \
     --volumes-from home \
     --volumes-from dotfiles \
@@ -23,6 +25,7 @@ devbox() {
 x11dockerhost() {
   docker run -d \
     -v $DOCKERSOCK:$DOCKERSOCK -v $DOCKERPATH:$DOCKERPATH \
+    -v $USERFOLDER:$USERFOLDER \
     -v /tmp:/tmp \
     --volumes-from home \
     --volumes-from dotfiles \
