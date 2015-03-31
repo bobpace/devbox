@@ -26,17 +26,8 @@ RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
 
 #better stack traces with nunit-console runner
 RUN sed -i \
-  -e 's/cli/cli --debug --runtime=v4.0/' \
+  -e 's/cli/cli --debug --runtime=v4.0 --optimize=-inline/' \
   /usr/bin/nunit-console
-
-#install watchman from facebook
-WORKDIR /usr/local/lib
-RUN git clone https://github.com/facebook/watchman.git \
-    && cd watchman \
-    && ./autogen.sh \
-    && ./configure \
-    && make \
-    && make install
 
 WORKDIR /home/devuser
 USER devuser
