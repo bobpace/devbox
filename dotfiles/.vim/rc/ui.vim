@@ -1,7 +1,6 @@
 set encoding=utf-8
 set background=dark
 let g:solarized_termcolors=16
-let g:solarized_termtrans=1
 set t_Co=16
 silent! colorscheme solarized
 set showmatch                                       "automatically highlight matching braces/brackets/etc.

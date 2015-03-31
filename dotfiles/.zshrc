@@ -100,4 +100,7 @@ paket() {
   mono .paket/paket.exe $@
 }
 
+#CTRL-S makes vim unresponsive (until CTRL-Q is pressed), this option removes those bindings
+stty -ixon
+
 [ -s "/home/devuser/.k/kvm/kvm.sh" ] && . "/home/devuser/.k/kvm/kvm.sh" # Load kvm
