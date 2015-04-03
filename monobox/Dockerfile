@@ -12,9 +12,10 @@ RUN echo "deb http://download.mono-project.com/repo/debian wheezy/snapshots/3.12
   automake \
   ca-certificates-mono \
   fsharp \
+  libtool \
   mono-complete \
-  nunit-console \
   nuget \
+  nunit-console \
   tree \
   && rm -rf /var/lib/apt/lists/*
 
@@ -28,6 +29,15 @@ RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
 RUN sed -i \
   -e 's/cli/cli --debug --runtime=v4.0 --optimize=-inline/' \
   /usr/bin/nunit-console
+
+#xsp to host asp.net mvc projects for development
+WORKDIR /usr/local/lib
+RUN git clone https://github.com/mono/xsp.git \
+  && cd xsp \
+  && ./autogen.sh \
+  && ./configure --prefix=/usr \
+  && make \
+  && make install
 
 WORKDIR /home/devuser
 USER devuser
