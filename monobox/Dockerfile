@@ -28,7 +28,8 @@ RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
 #better stack traces with nunit-console runner
 RUN sed -i \
   -e 's/cli \(.*\) /cli --debug --runtime=v4.0 --optimize=-inline \1 -config=Debug /' \
-  /usr/bin/nunit-console
+  /usr/bin/nunit-console \
+  && ln -s /usr/bin/nunit-console /usr/bin/nunit-console.exe
 
 #xsp to host asp.net mvc projects for development
 WORKDIR /usr/local/lib
