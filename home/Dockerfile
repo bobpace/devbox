@@ -37,7 +37,9 @@ RUN echo 'stty ek' >> ~/.profile
 #grunt-init csharp
 RUN mkdir ~/.grunt-init \
   && git clone -b paket \
-  https://github.com/bobpace/grunt-init-csharpsolution ~/.grunt-init/csharp
+  https://github.com/bobpace/grunt-init-csharpsolution ~/.grunt-init/csharp \
+  && git clone -b paket \
+  https://github.com/bobpace/aspnetmvc-for-osx.git ~/.grunt-init/aspnetmvc
 
 VOLUME /home/devuser
 

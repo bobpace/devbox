@@ -27,7 +27,7 @@ RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
 
 #better stack traces with nunit-console runner
 RUN sed -i \
-  -e 's/cli/cli --debug --runtime=v4.0 --optimize=-inline/' \
+  -e 's/cli \(.*\) /cli --debug --runtime=v4.0 --optimize=-inline \1 -config=Debug /' \
   /usr/bin/nunit-console
 
 #xsp to host asp.net mvc projects for development
@@ -37,7 +37,9 @@ RUN git clone https://github.com/mono/xsp.git \
   && ./autogen.sh \
   && ./configure --prefix=/usr \
   && make \
-  && make install
+  && make install \
+  && mkdir /etc/mono/registry \
+  && chmod uog+rw /etc/mono/registry
 
 WORKDIR /home/devuser
 USER devuser
