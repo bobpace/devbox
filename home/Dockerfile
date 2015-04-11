@@ -12,6 +12,8 @@ RUN mkdir -p ~/devbox/dotfiles/.vim \
     && ln -s ~/devbox/dotfiles/.octaverc ~/.octaverc \
     && touch ~/devbox/dotfiles/.curlrc \
     && ln -s ~/devbox/dotfiles/.curlrc ~/.curlrc \
+    && touch ~/devbox/dotfiles/.eslintrc \
+    && ln -s ~/devbox/dotfiles/.eslintrc ~/.eslintrc \
     && mkdir -p ~/.oh-my-zsh \
     && git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
     && touch ~/devbox/dotfiles/.zshrc \

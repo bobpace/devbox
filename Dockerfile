@@ -8,16 +8,18 @@ RUN apt-get update \
     ca-certificates \
     cmake \ 
     curl \
+    emacs \
     git \
+    libpq-dev \
     locales \
     postgresql-client \
-    libpq-dev \
     python-dev \
     python-software-properties \
     silversearcher-ag \
     software-properties-common \
     ssh \
     sudo \
+    tree \
     unzip \
     vim-gtk \
     wget \
@@ -51,6 +53,15 @@ RUN useradd --create-home -G users devuser \
 RUN echo "devuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/devuser \
     && echo "Defaults        env_keep+=SSH_AUTH_SOCK" >> /etc/sudoers.d/devuser \
     && chmod 0440 /etc/sudoers.d/devuser
+
+#node.js
+RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g \
+    babel-eslint \
+    eslint \
+    grunt-init \
+    && rm -rf /var/lib/apt/lists/*
 
 USER devuser
 ENV HOME /home/devuser

@@ -12,18 +12,12 @@ RUN echo "deb http://download.mono-project.com/repo/debian wheezy/snapshots/3.12
   automake \
   ca-certificates-mono \
   fsharp \
+  gyp \
   libtool \
   mono-complete \
   nuget \
   nunit-console \
-  tree \
   && rm -rf /var/lib/apt/lists/*
-
-# node.js for project scaffolding and front end asset convenience
-RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g grunt-init \
-    && rm -rf /var/lib/apt/lists/*
 
 #better stack traces with nunit-console runner
 RUN sed -i \
@@ -42,9 +36,16 @@ RUN git clone https://github.com/mono/xsp.git \
   && mkdir /etc/mono/registry \
   && chmod uog+rw /etc/mono/registry
 
+#libuv for roslyn
+RUN wget http://dist.libuv.org/dist/v1.0.0-rc1/libuv-v1.0.0-rc1.tar.gz \
+  && tar -xvf libuv-v1.0.0-rc1.tar.gz \
+  && cd libuv-v1.0.0-rc1/ \
+  && ./gyp_uv.py -f make -Duv_library=shared_library \
+  && make -C out \
+  && cp out/Debug/lib.target/libuv.so /usr/lib/libuv.so.1.0.0-rc1 \
+  && ln -s libuv.so.1.0.0-rc1 /usr/lib/libuv.so.1
+
 WORKDIR /home/devuser
 USER devuser
-
-EXPOSE 5004
 
 CMD ["/bin/zsh"]

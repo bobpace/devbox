@@ -95,6 +95,8 @@ then
 fi
 
 alias node='node --harmony'
+alias emacs='emacsclient -nw -c -a ""'
+alias killemacs='emacsclient -e "(kill-emacs)"'
 
 paket() {
   mono .paket/paket.exe $@

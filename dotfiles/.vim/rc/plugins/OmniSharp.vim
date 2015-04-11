@@ -9,6 +9,8 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 
+"let g:OmniSharp_server_type = 'roslyn'
+
 autocmd Filetype cs,cshtml.html call SetOmniSharpOptions()
 function SetOmniSharpOptions()
   echom "testing"
