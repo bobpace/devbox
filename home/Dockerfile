@@ -4,6 +4,8 @@ MAINTAINER Bob Pace <bob.pace@gmail.com>
 #symlinks for dotfiles to be mounted into container via --volumes-from dotfiles
 RUN mkdir -p ~/devbox/dotfiles/.vim \
     && ln -s ~/devbox/dotfiles/.vim ~/.vim \
+    && mkdir -p ~/devbox/dotfiles/.emacs.d \
+    && ln -s ~/devbox/dotfiles/.emacs.d ~/.emacs.d \
     && touch ~/devbox/dotfiles/.vimrc \
     && ln -s ~/devbox/dotfiles/.vimrc ~/.vimrc \
     && touch ~/devbox/dotfiles/.tmux.conf \
