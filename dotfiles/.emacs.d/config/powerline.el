@@ -1,4 +1,6 @@
+(require 'use-package)
 (use-package powerline
+  :ensure t)
+(use-package powerline-evil
   :ensure t
-  :config
-  (powerline-center-theme))
+  :config (powerline-evil-vim-color-theme))

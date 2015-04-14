@@ -1,4 +1,3 @@
+(require 'use-package)
 (use-package ag
-    :ensure t
-    :defer
-    :commands (ag ag-regexp))
+  :ensure t)

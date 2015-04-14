@@ -2,3 +2,5 @@ bundle/
 .netrwhist
 elpa
 auto-save-list
+projectile-bookmarks.eld
+projectile.cache

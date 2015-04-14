@@ -1,3 +1,3 @@
 (require 'use-package)
-(use-package react-snippets
+(use-package ace-jump-mode
   :ensure t)
