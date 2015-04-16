@@ -40,6 +40,20 @@
   (evil-define-key 'normal omnisharp-mode-map (kbd ", x") 'omnisharp-fix-code-issue-at-point)
   (evil-define-key 'normal omnisharp-mode-map (kbd ", fx") 'omnisharp-fix-usings)
   (evil-define-key 'normal omnisharp-mode-map (kbd ", o") 'omnisharp-auto-complete-overrides)
+  (defun omnisharp-unit-test (mode)
+    "Run tests after building the solution. Mode should be one of 'single', 'fixture' or 'all'"
+    (interactive)
+    (let ((build-command
+           (omnisharp-post-message-curl
+            (concat (omnisharp-get-host) "buildcommand") (omnisharp--get-common-params)))
+
+          (test-command
+           (cdr (assoc 'TestCommand
+                       (omnisharp-post-message-curl-as-json
+                        (concat (omnisharp-get-host) "gettestcontext")
+                        (cons `("Type" . ,mode) (omnisharp--get-common-params)))))))
+
+      (compile (concat (replace-regexp-in-string "\n$" "" build-command) " && " test-command))))
   (define-key evil-normal-state-map (kbd ", rt") (lambda() (interactive) (omnisharp-unit-test "single")))
   (define-key evil-normal-state-map (kbd ", rf") (lambda() (interactive) (omnisharp-unit-test "fixture")))
   (define-key evil-normal-state-map (kbd ", ra") (lambda() (interactive) (omnisharp-unit-test "all")))

@@ -70,10 +70,32 @@
     comint-mode-hook
     conf-mode-hook))
 
-;no evil mode
+;no evil modes
 (add-hook 'calendar-initial-window-hook 'turn-off-evil-mode)
 (add-hook 'Info-mode-hook 'turn-off-evil-mode)
 (add-hook 'help-mode 'turn-off-evil-mode)
+
+;eww
+(eval-after-load "eww"
+  '(progn
+     (setq eww-search-prefix "https://www.google.com/search?q=")
+     (define-key eww-mode-map (kbd "o") 'eww)
+     (define-key eww-mode-map (kbd "L") 'eww-forward-url)
+     (define-key eww-mode-map (read-kbd-macro "/") 'evil-search-forward)
+     (define-key eww-mode-map (read-kbd-macro "?") 'evil-search-backward)
+     (define-key eww-mode-map (read-kbd-macro "n") 'evil-search-next)
+     (define-key eww-mode-map (read-kbd-macro "N") 'evil-search-previous)
+     (define-key eww-mode-map (read-kbd-macro "r") 'eww-reload)
+     (define-key eww-mode-map (kbd "<backtab>") 'shr-previous-link)
+     (define-key eww-mode-map (read-kbd-macro "j") 'evil-next-line)
+     (define-key eww-mode-map (read-kbd-macro "k") 'evil-previous-line)
+     (define-key eww-mode-map (read-kbd-macro "C-j") (lambda () (interactive) (next-line 2) (scroll-up 2)))
+     (define-key eww-mode-map (read-kbd-macro "C-k") (lambda () (interactive) (scroll-down 2) (previous-line 2)))
+     (define-key eww-mode-map (read-kbd-macro "d") 'evil-scroll-down)
+     (define-key eww-mode-map (read-kbd-macro "u") 'evil-scroll-up)
+     (define-key eww-mode-map (read-kbd-macro "C-d") 'evil-scroll-down)
+     (define-key eww-mode-map (read-kbd-macro "C-u") 'evil-scroll-up)
+     ))
 
 ;install packages from config directory
 (require 'package)
