@@ -3,12 +3,11 @@ MAINTAINER Bob Pace <bob.pace@gmail.com>
 
 ENV TERM xterm-256color
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install \
     build-essential \
     ca-certificates \
     cmake \ 
     curl \
-    emacs \
     git \
     libpq-dev \
     locales \
@@ -26,6 +25,7 @@ RUN apt-get update \
     xauth \
     xclip \
     zsh \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y build-dep emacs24 \
     && rm -rf /var/lib/apt/lists/*
 
 #Timezone
@@ -62,6 +62,17 @@ RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
     eslint \
     grunt-init \
     && rm -rf /var/lib/apt/lists/*
+
+#emacs 24.4
+WORKDIR /usr/local/lib
+RUN mkdir emacs \
+  && cd emacs \
+  && wget http://mirror.team-cymru.org/gnu/emacs/emacs-24.4.tar.gz \
+  && tar xvf emacs-24.4.tar.gz \
+  && cd emacs-24.4 \
+  && ./configure \
+  && make \
+  && make install
 
 USER devuser
 ENV HOME /home/devuser

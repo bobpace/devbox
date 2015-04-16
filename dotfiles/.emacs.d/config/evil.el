@@ -24,6 +24,9 @@
    evil-cross-lines t
    ;; don't move the cursor around like Vim
    evil-move-cursor-back)
+  (define-key evil-normal-state-map (kbd "C-p") 'helm-mini)
+  (define-key evil-normal-state-map (kbd "M-J") 'flycheck-next-error)
+  (define-key evil-normal-state-map (kbd "M-K") 'flycheck-previous-error)
   (define-key evil-normal-state-map (kbd "q") nil)
   (define-key evil-insert-state-map (kbd "C-e") nil)
   (define-key evil-insert-state-map (kbd "C-d") nil)
@@ -48,6 +51,7 @@
        "o" 'helm-occur
        "j" 'helm-M-x
        "e" 'helm-find-files
+       "r" 'helm-recentf
        "b" 'helm-buffers-list
        "h" 'helm-projectile-find-file
        "H" 'helm-projectile)))
@@ -93,6 +97,11 @@
   :ensure t
   :config
   (global-evil-surround-mode 1))
+
+(use-package evil-visualstar
+  :ensure t
+  :config
+  (global-evil-visualstar-mode 1))
 
 (add-hook 'js-mode-hook
           (function (lambda ()

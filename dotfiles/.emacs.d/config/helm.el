@@ -6,11 +6,11 @@
   (helm-mode 1)
   (helm-autoresize-mode 1)
   (setq helm-recentf-fuzzy-match t
+        helm-always-two-windows t
         helm-buffers-fuzzy-matching t)
   (defvar helm-M-x-fuzzy-match
     (setq helm-M-x-fuzzy-match t))
   (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-  (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "C-x C-m") 'helm-M-x)
   (global-set-key (kbd "C-x m") 'helm-M-x)
   (global-set-key (kbd "C-x b") 'helm-mini)

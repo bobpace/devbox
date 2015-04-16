@@ -1,5 +1,5 @@
 REPOSITORY := bobpace
-images = x11dockerhost home dotfiles data nodebox scalabox sbtcache gobox gopath devbox postgres
+images = x11dockerhost home dotfiles data scalabox sbtcache gobox gopath devbox postgres
 
 all: x11dockerhost home dotfiles data
 
@@ -22,10 +22,6 @@ data:
 #DOCKER HOST
 x11dockerhost:
 	@cd x11dockerhost && docker build -t $(REPOSITORY)/x11dockerhost .
-
-#NODE
-nodebox: devbox
-	@cd nodebox && docker build -t $(REPOSITORY)/nodebox .
 
 #SCALA
 scalabox: devbox
@@ -58,4 +54,4 @@ octavebox: devbox
 clean:
 	@$(foreach image,$(images),docker rmi --force $(REPOSITORY)/$(image);)
 
-.PHONY: all devbox devbox-no-cache dotfiles home data nodebox scalabox sbtcache gobox gopath x11dockerhost postgres clean
+.PHONY: all devbox devbox-no-cache dotfiles home data scalabox sbtcache gobox gopath x11dockerhost postgres clean

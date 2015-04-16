@@ -6,6 +6,8 @@
       inhibit-startup-echo-area-message t
       inhibit-startup-message t)
 
+;(toggle-debug-on-error)
+
 ;auto revert buffer when file changes on disk
 (global-auto-revert-mode t)
 ;always add new line to the end of a file
@@ -57,6 +59,7 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+(setq default-major-mode 'text-mode)
 
 ;linum-mode for mode hooks:
 (mapc
