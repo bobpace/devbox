@@ -3,7 +3,8 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "mocha": true
   },
   "plugins": [
     "react"
@@ -30,6 +31,7 @@
     "no-shadow": [0],
     "no-unused-vars": [1],
     "no-use-before-define": [2, "nofunc"],
+    "no-unused-expressions": 0,
     "react/display-name": 1,
     "react/jsx-boolean-value": 1,
     "react/jsx-quotes": 1,

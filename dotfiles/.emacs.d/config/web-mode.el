@@ -13,6 +13,9 @@
     ;;; http://web-mode.org/
     (eval-after-load "expand-region"
       (progn
-        ('er/add-js-mode-expansions)
-        ('er/add-js2-mode-expansions))))
+        (when (fboundp 'er/add-js-mode-expansions)
+          (er/add-js-mode-expansions))
+        (when (fboundp 'er/add-js2-mode-expansions)
+          (er/add-js2-mode-expansions))
+        )))
   (add-hook 'web-mode-hook 'my-web-mode-hook))

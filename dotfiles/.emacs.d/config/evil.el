@@ -13,12 +13,12 @@
    '(text-mode-hook
      prog-mode-hook
      comint-mode-hook
-     conf-mode-hook))
+     conf-mode-hook
+     css-mode-hook))
   (mapc
    (lambda (mode-hook)
      (add-hook mode-hook 'turn-off-evil-mode))
    '(Info-mode-hook))
-  ;(evil-mode 1)
   (setq
    ;; h/l wrap around to next lines
    evil-cross-lines t
