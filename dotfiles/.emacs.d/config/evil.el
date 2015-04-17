@@ -27,6 +27,8 @@
   (define-key evil-normal-state-map (kbd "C-p") 'helm-mini)
   (define-key evil-normal-state-map (kbd "M-J") 'flycheck-next-error)
   (define-key evil-normal-state-map (kbd "M-K") 'flycheck-previous-error)
+  (define-key evil-normal-state-map (kbd "C-y") 'evil-scroll-up)
+  (define-key evil-normal-state-map (kbd "<SPC> <SPC>") 'evil-force-normal-state)
   (define-key evil-normal-state-map (kbd "q") nil)
   (define-key evil-insert-state-map (kbd "C-e") nil)
   (define-key evil-insert-state-map (kbd "C-d") nil)

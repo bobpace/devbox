@@ -61,7 +61,8 @@
       `((".*" ,temporary-file-directory t)))
 (setq default-major-mode 'text-mode)
 
-;linum-mode for mode hooks:
+;linum-mode
+(setq linum-format "%4d \u2502 ")
 (mapc
 (lambda (mode-hook)
     (add-hook mode-hook 'linum-mode))

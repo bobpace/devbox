@@ -54,15 +54,6 @@ RUN echo "devuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/devuser \
     && echo "Defaults        env_keep+=SSH_AUTH_SOCK" >> /etc/sudoers.d/devuser \
     && chmod 0440 /etc/sudoers.d/devuser
 
-#node.js
-RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g \
-    babel-eslint \
-    eslint \
-    grunt-init \
-    && rm -rf /var/lib/apt/lists/*
-
 #emacs 24.4
 WORKDIR /usr/local/lib
 RUN mkdir emacs \
@@ -73,6 +64,16 @@ RUN mkdir emacs \
   && ./configure \
   && make \
   && make install
+
+#node.js
+RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g \
+    babel-eslint \
+    eslint \
+    eslint-plugin-react \
+    grunt-init \
+    && rm -rf /var/lib/apt/lists/*
 
 USER devuser
 ENV HOME /home/devuser

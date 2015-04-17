@@ -72,7 +72,7 @@
       (sp-local-tag "i" "\"<" "\">"))
 
     ;;; html-mode
-    (sp-with-modes '(html-mode sgml-mode)
+    (sp-with-modes '(html-mode sgml-mode web-mode)
       (sp-local-pair "<" ">"))
 
     ;;; lisp modes
