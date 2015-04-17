@@ -72,6 +72,7 @@ RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
     babel-eslint \
     eslint \
     eslint-plugin-react \
+    jsonlint \
     grunt-init \
     && rm -rf /var/lib/apt/lists/*
 
