@@ -32,6 +32,8 @@
     "no-unused-vars": [1],
     "no-use-before-define": [2, "nofunc"],
     "no-unused-expressions": 0,
+    "no-underscore-dangle": 0,
+    "no-cond-assign": 0,
     "react/display-name": 1,
     "react/jsx-boolean-value": 1,
     "react/jsx-quotes": 1,

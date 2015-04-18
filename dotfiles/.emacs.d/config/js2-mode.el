@@ -8,4 +8,6 @@
     (defvar js-indent-level
       (setq js-indent-level 2))
     (custom-set-variables
-     '(js2-basic-offset 2)))
+     '(js2-basic-offset 2))
+    (add-hook 'js2-mode-hook
+              (lambda () (tern-mode 1))))

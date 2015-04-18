@@ -3,7 +3,7 @@
 (defvar tmux-pane-number)
 (setq tmux-session-name 0)
 (setq tmux-window-name 1)
-(setq tmux-pane-number 1)
+(setq tmux-pane-number 2)
 
 (defun tmux-split-window-project-root()
   "splits tmux pane horizontally at project root"
@@ -24,3 +24,5 @@
   (setq tmux-window-name y)
   (setq tmux-pane-number z)
   (message "Tmux Setup, session name: %s, window name: %s, pane number: %s" tmux-session-name tmux-window-name tmux-pane-number))
+
+(define-key global-map (kbd "C-c \\") 'tmux-split-window-project-root)

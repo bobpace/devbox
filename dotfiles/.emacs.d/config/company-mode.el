@@ -12,3 +12,9 @@
   (define-key company-active-map (kbd "C-j") 'company-select-next-or-abort)
   (define-key company-active-map (kbd "C-k") 'company-select-previous-or-abort)
   (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word))
+
+(use-package company-tern
+  :ensure t
+  :config
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-tern)))

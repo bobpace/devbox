@@ -74,6 +74,7 @@ RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
     eslint-plugin-react \
     jsonlint \
     grunt-init \
+    tern \
     && rm -rf /var/lib/apt/lists/*
 
 USER devuser
