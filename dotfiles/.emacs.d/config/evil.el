@@ -24,6 +24,8 @@
    evil-cross-lines t
    ;; don't move the cursor around like Vim
    evil-move-cursor-back)
+
+  (define-key evil-normal-state-map "gf" 'helm-find-files)
   (define-key evil-normal-state-map (kbd "C-p") 'helm-mini)
   (define-key evil-normal-state-map (kbd "M-J") 'flycheck-next-error)
   (define-key evil-normal-state-map (kbd "M-K") 'flycheck-previous-error)
@@ -50,7 +52,7 @@
        "f" 'helm-for-files
        "y" 'helm-show-kill-ring
        "t" 'helm-top
-       "o" 'helm-occur
+       "o" 'helm-swoop
        "j" 'helm-M-x
        "e" 'helm-find-files
        "r" 'helm-recentf
@@ -65,13 +67,8 @@
       (evil-leader/set-key "xx" 'er/expand-region)))
   (eval-after-load "magit"
     (evil-leader/set-key "g" 'magit-status))
-  (eval-after-load "quickrun"
-    (evil-leader/set-key "q" 'quickrun))
-  (eval-after-load "git-gutter-mode"
-    (evil-leader/set-key
-     "s" 'git-gutter:stage-hunk
-     "n" 'git-gutter:next-hunk
-     "p" 'git-gutter:previous-hunk))
+  ;; (eval-after-load "quickrun"
+  ;;   (evil-leader/set-key "q" 'quickrun))
   (evil-leader/set-key
    "c" 'evil-ace-jump-char-mode
    "w" 'evil-ace-jump-word-mode
@@ -104,6 +101,16 @@
   :ensure t
   :config
   (global-evil-visualstar-mode 1))
+
+(use-package evil-matchit
+  :ensure t
+  :config
+  (global-evil-matchit-mode))
+
+(use-package evil-nerd-commenter
+  :ensure t
+  :config
+  (evilnc-default-hotkeys))
 
 (add-hook 'js-mode-hook
           (function (lambda ()

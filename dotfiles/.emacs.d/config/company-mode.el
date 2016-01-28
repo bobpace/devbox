@@ -5,6 +5,8 @@
   (add-hook 'after-init-hook 'global-company-mode)
 
   (setq company-dabbrev-downcase nil)
+
+  (define-key global-map (kbd "C-c f") 'company-files)
   (define-key company-active-map (kbd "M-n") nil)
   (define-key company-active-map (kbd "M-p") nil)
   (define-key company-active-map (kbd "C-n") 'company-select-next)

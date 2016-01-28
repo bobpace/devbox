@@ -33,6 +33,7 @@
 ;; set lang to enable Chinese display in shell-mode
 (setenv "LANG" "en_US.UTF-8")
 
+
 ;unbind C-q since its tmux prefix for nested sessions
 (global-unset-key "\C-q")
 
@@ -59,6 +60,9 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+(setq backup-by-copying t)
+;prevents .# files from being written in current directory every time buffer is edited before saving
+(setq create-lockfiles nil)
 (setq default-major-mode 'text-mode)
 
 ;linum-mode
@@ -68,13 +72,28 @@
     (add-hook mode-hook 'linum-mode))
 '(text-mode-hook
     prog-mode-hook
-    comint-mode-hook
-    conf-mode-hook))
+    conf-mode-hook
+    css-mode-hook))
 
 ;no evil modes
 (add-hook 'calendar-initial-window-hook 'turn-off-evil-mode)
 (add-hook 'Info-mode-hook 'turn-off-evil-mode)
-(add-hook 'help-mode 'turn-off-evil-mode)
+(add-hook 'help-mode-hook 'turn-off-evil-mode)
+
+;octave-mode
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+(add-hook 'inferior-octave-mode-hook
+          (lambda ()
+            (define-key inferior-octave-mode-map [up] 'comint-previous-input)
+            (define-key inferior-octave-mode-map [down] 'comint-next-input)))
+(add-hook 'octave-mode-hook
+          (lambda ()
+            (evil-define-key 'normal octave-mode-map (kbd "g d") 'octave-find-definition)
+            ))
+
+;winner-mode
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
 
 ;eww
 (eval-after-load "eww"

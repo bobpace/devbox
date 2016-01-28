@@ -6,7 +6,6 @@
   (helm-mode 1)
   (helm-autoresize-mode 1)
   (setq helm-recentf-fuzzy-match t
-        helm-always-two-windows t
         helm-buffers-fuzzy-matching t)
   (defvar helm-M-x-fuzzy-match
     (setq helm-M-x-fuzzy-match t))
@@ -38,6 +37,11 @@
   :ensure t
   :config
   (define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
+
+(use-package helm-swoop
+  :ensure t
+  :config
+  )
 
 (use-package helm-ls-git
   :ensure t
