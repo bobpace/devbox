@@ -18,12 +18,14 @@ RUN apt-get update \
     software-properties-common \
     ssh \
     sudo \
+    tmux \
     tree \
     unzip \
     vim-gtk \
     wget \
     xauth \
     xclip \
+    zip \
     zsh \
     && DEBIAN_FRONTEND=noninteractive apt-get -y build-dep emacs24 \
     && rm -rf /var/lib/apt/lists/*
@@ -38,12 +40,6 @@ RUN dpkg-reconfigure locales \
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
-
-#tmux 1.9a
-RUN add-apt-repository ppa:pi-rho/dev \
-    && apt-get update \
-    && apt-get install -y tmux=1.9a-1~ppa1~t \
-    && rm -rf /var/lib/apt/lists/*
 
 RUN useradd --create-home -G users devuser \
     && chgrp -R devuser /usr/local \
@@ -66,14 +62,14 @@ RUN mkdir emacs \
   && make install
 
 #node.js
-RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - \
     && apt-get install -y nodejs \
+    && npm install -g npm \
     && npm install -g \
     babel-eslint \
     eslint \
     eslint-plugin-react \
     jsonlint \
-    grunt-init \
     tern \
     && rm -rf /var/lib/apt/lists/*
 

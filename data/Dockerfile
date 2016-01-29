@@ -1,8 +1,9 @@
 FROM busybox
 MAINTAINER Bob Pace <bob.pace@gmail.com>
 
-RUN mkdir -p /home/devuser/data \
-    && chown -R default /home/devuser/data
+RUN adduser --disabled-password --gecos "" devuser \
+    && mkdir -p /home/devuser/data \
+    && chown -R devuser /home/devuser/data
 
 VOLUME /home/devuser/data
 

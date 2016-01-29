@@ -1,7 +1,7 @@
 REPOSITORY := bobpace
-images = x11dockerhost home dotfiles data scalabox sbtcache gobox gopath devbox postgres
+images = x11dockerhost home dotfiles data devbox postgres haskellbox octavebox
 
-all: x11dockerhost home dotfiles data
+all: devbox x11dockerhost home dotfiles data
 
 #BASE
 devbox:
@@ -23,35 +23,18 @@ data:
 x11dockerhost:
 	@cd x11dockerhost && docker build -t $(REPOSITORY)/x11dockerhost .
 
-#SCALA
-scalabox: devbox
-	@cd scalabox && docker build -t $(REPOSITORY)/scalabox .
-
-sbtcache:
-	@cd sbtcache && docker build -t $(REPOSITORY)/sbtcache .
-
-#GO
-gobox: devbox
-	@cd gobox && docker build -t $(REPOSITORY)/gobox .
-
-gopath:
-	@cd gopath && docker build -t $(REPOSITORY)/gopath .
-
-#Haskell
+#Other
 haskellbox: devbox
 	@cd haskellbox && docker build -t $(REPOSITORY)/haskellbox .
+
+octavebox: devbox
+	@cd octavebox && docker build -t $(REPOSITORY)/octavebox .
 
 #Postgres with PLV8
 postgres:
 	@cd postgres && docker build -t $(REPOSITORY)/postgres .
 
-monobox: devbox
-	@cd monobox && docker build -t $(REPOSITORY)/monobox .
-
-octavebox: devbox
-	@cd octavebox && docker build -t ${REPOSITORY}/octavebox .
-
 clean:
 	@$(foreach image,$(images),docker rmi --force $(REPOSITORY)/$(image);)
 
-.PHONY: all devbox devbox-no-cache dotfiles home data scalabox sbtcache gobox gopath x11dockerhost postgres clean
+.PHONY: all devbox devbox-no-cache dotfiles home data x11dockerhost postgres clean

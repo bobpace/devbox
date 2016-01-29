@@ -2,32 +2,17 @@
 
 ## Installation
 
-make devbox dotfiles and data
-
 ```
 make
 ```
 
-Make others if wanted
-
-```
-make nodebox
-
-make scalabox
-make sbtcache
-
-make gobox
-make gopath
-```
-
-Run a volume container for home and dotfiles:
+Run a volume container for home, dotfiles, and data:
 
     docker run --name home bobpace/home
     docker run --name dotfiles bobpace/dotfiles
+    docker run --name data bobpace/data
 
-Run one of [devbox nodebox scalabox gobox] with --volumes-from home and --volumes-from dotfiles.
-
-The shell scripts in devbox-scripts.sh will pass along the docker socket, ssh agent, and X11 forwarding to a child container.
+Use the shell scripts in devbox-scripts.sh, they will handle passing along the docker socket, ssh agent, and X11 forwarding.
 
 ##Ssh keys for working with git
 
@@ -56,7 +41,4 @@ Start a postgres instance:
 
 Run a box with --link some-postgres:postgres
 
-    nodebox --link some-postgres:postgres
-
 There is a profile set up for dbext.vim that has the postgres connection information for use with a linked postgres container
-

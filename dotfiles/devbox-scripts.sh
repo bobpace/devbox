@@ -40,30 +40,6 @@ killx11() {
   docker stop x11dockerhost && docker rm x11dockerhost
 }
 
-nodebox() {
-  devbox \
-    -h nodebox \
-    --name nodebox \
-    $@ bobpace/nodebox
-}
-
-scalabox() {
-  devbox \
-    --volumes-from sbtcache \
-    -h scalabox \
-    --name scalabox \
-    $@ bobpace/scalabox
-}
-
-gobox() {
-  devbox \
-    --volumes-from gopath \
-    -w /home/devuser/go \
-    -h gobox \
-    --name gobox \
-    $@ bobpace/gobox
-}
-
 octavebox() {
   devbox \
     -h octavebox \
@@ -71,11 +47,11 @@ octavebox() {
     $@ bobpace/octavebox
 }
 
-monobox() {
+haskellbox() {
   devbox \
-    -h monobox \
-    --name monobox \
-    $@ bobpace/monobox
+    -h haskellbox \
+    --name haskellbox \
+    $@ bobpace/haskellbox
 }
 
 samba() {
@@ -90,11 +66,6 @@ rmiuntagged() {
 
 rmlast() {
   docker rm $(docker ps -lq)
-}
-
-#Typesafe activator
-runactivator() {
-  activator ui -Dhttp.address=0.0.0.0
 }
 
 #X11

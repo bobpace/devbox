@@ -6,6 +6,8 @@ edit hosts file to include an entry for dockerhost
 
     192.168.59.103    dockerhost
 
+If you are using docker toolbox, this IP may be different
+
 Windows: Install Xming and set DISPLAY environment variable
 
 ie:
