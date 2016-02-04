@@ -2,6 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_TMUX_AUTOSTART=true
 #eval $(docker-machine env default)
+export APP_HOSTNAME=dockerhost
 
 #eval `ssh-agent -s`
 #ssh-add ~/.ssh/id_rsa

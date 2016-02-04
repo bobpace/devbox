@@ -44,6 +44,7 @@ octavebox() {
   devbox \
     -h octavebox \
     --name octavebox \
+    -w $(pwd) \
     $@ bobpace/octavebox
 }
 
@@ -51,6 +52,7 @@ haskellbox() {
   devbox \
     -h haskellbox \
     --name haskellbox \
+    -w $(pwd) \
     $@ bobpace/haskellbox
 }
 
