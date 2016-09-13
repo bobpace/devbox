@@ -28,7 +28,6 @@ set incsearch
 set ignorecase
 set smartcase
 set noswapfile
-set suffixesadd+=.js,.jsx
 set exrc
 set secure
 nnoremap <F2> :set invpaste paste?<CR>

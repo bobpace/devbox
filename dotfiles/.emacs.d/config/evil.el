@@ -12,6 +12,7 @@
      (evil-esc-mode 1))
    '(text-mode-hook
      prog-mode-hook
+     fsharp-mode-hook
      comint-mode-hook
      conf-mode-hook
      css-mode-hook))

@@ -48,6 +48,14 @@ octavebox() {
     $@ bobpace/octavebox
 }
 
+fsharpbox() {
+  devbox \
+    -h fsharpbox \
+    --name fsharpbox \
+    -w $(pwd) \
+    $@ bobpace/fsharpbox
+}
+
 haskellbox() {
   devbox \
     -h haskellbox \

@@ -11,8 +11,8 @@
      '(js2-basic-offset 2))
     (add-hook 'js2-mode-hook
               (lambda ()
-                (tern-mode 1)
                 (define-key js2-mode-map (kbd "C-c i") 'js-doc-insert-function-doc)
                 (define-key js2-mode-map (kbd "@") 'js-doc-insert-tag)
                 (setq evil-shift-width js-indent-level)
+                (setq js2-indent-switch-body t)
                 )))

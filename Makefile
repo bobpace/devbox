@@ -1,5 +1,5 @@
 REPOSITORY := bobpace
-images = x11dockerhost home dotfiles data devbox postgres haskellbox octavebox
+images = x11dockerhost home dotfiles data devbox postgres haskellbox octavebox fsharpbox
 
 all: devbox x11dockerhost home dotfiles data
 
@@ -26,6 +26,9 @@ x11dockerhost:
 #Other
 haskellbox: devbox
 	@cd haskellbox && docker build -t $(REPOSITORY)/haskellbox .
+
+fsharpbox: devbox
+	@cd fsharpbox && docker build -t $(REPOSITORY)/fsharpbox .
 
 octavebox: devbox
 	@cd octavebox && docker build -t $(REPOSITORY)/octavebox .

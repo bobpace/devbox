@@ -10,6 +10,5 @@
     (setq web-mode-css-indent-offset 2)
     (setq web-mode-code-indent-offset 2)
     (setq evil-shift-width js-indent-level)
-    (tern-mode 1)
     (emmet-mode 1))
   (add-hook 'web-mode-hook 'my-web-mode-hook))
