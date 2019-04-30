@@ -1,0 +1,1 @@
+NeoBundle 'posva/vim-vue'

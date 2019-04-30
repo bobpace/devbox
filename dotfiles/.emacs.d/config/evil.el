@@ -24,13 +24,13 @@
    ;; h/l wrap around to next lines
    evil-cross-lines t
    ;; don't move the cursor around like Vim
-   evil-move-cursor-back)
+   evil-move-cursor-back t)
 
   (define-key evil-normal-state-map "gf" 'helm-find-files)
   (define-key evil-normal-state-map (kbd "C-p") 'helm-mini)
   (define-key evil-normal-state-map (kbd "M-J") 'flycheck-next-error)
   (define-key evil-normal-state-map (kbd "M-K") 'flycheck-previous-error)
-  (define-key evil-normal-state-map (kbd "C-y") 'evil-scroll-up)
+  (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
   (define-key evil-normal-state-map (kbd "<SPC> <SPC>") 'evil-force-normal-state)
   (define-key evil-normal-state-map (kbd "q") nil)
   (define-key evil-insert-state-map (kbd "C-e") nil)
@@ -46,20 +46,17 @@
   :ensure t
   :config
   (evil-leader/set-leader "<SPC>")
-  (eval-after-load "helm"
-    (progn
-      (require 'helm-projectile)
-      (evil-leader/set-key
-       "f" 'helm-for-files
-       "y" 'helm-show-kill-ring
-       "t" 'helm-top
-       "o" 'helm-swoop
-       "j" 'helm-M-x
-       "e" 'helm-find-files
-       "r" 'helm-recentf
-       "b" 'helm-buffers-list
-       "h" 'helm-projectile-find-file
-       "H" 'helm-projectile)))
+  (evil-leader/set-key
+   "f" 'helm-for-files
+   "y" 'helm-show-kill-ring
+   "t" 'helm-top
+   "o" 'helm-swoop
+   "j" 'helm-M-x
+   "e" 'helm-find-files
+   "r" 'helm-recentf
+   "b" 'helm-buffers-list
+   "h" 'helm-projectile-find-file
+   "H" 'helm-projectile)
   (eval-after-load "expand-region"
     (progn
       (setq expand-region-contract-fast-key "z")
@@ -82,16 +79,6 @@
    "2" 'split-window-below
    "3" 'split-window-right)
   (global-evil-leader-mode))
-
-(use-package evil-jumper
-  :ensure t
-  :config
-    (setq evil-jumper-auto-center t
-          evil-jumper-file (concat temporary-file-directory "evil-jumps")
-          evil-jumper-auto-save-interval 3600)
-    (global-evil-jumper-mode t)
-    ;iterm2 key ^i : ^[[4n
-    (evil-define-key 'normal evil-jumper-mode-map (kbd "M-[ 4 n") #'evil-jumper/forward))
 
 (use-package evil-surround
   :ensure t

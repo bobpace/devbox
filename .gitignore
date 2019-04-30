@@ -7,3 +7,5 @@ projectile.cache
 cache/
 eshell/
 eww-bookmarks
+recentf
+dotfiles/.emacs.d/games/

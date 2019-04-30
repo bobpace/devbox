@@ -1,0 +1,1 @@
+NeoBundle 'tfnico/vim-gradle'

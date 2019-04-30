@@ -4,6 +4,7 @@
 
 [core]
   autocrlf = input
+	editor = /usr/local/bin/vim
 
 [color]
   ui = true
@@ -46,15 +47,20 @@
   autosetupmerge = true
 
 [merge]
-  tool = vimdiff
-  keepBackup = false
-  conflictstyle = diff3
-
-[mergetool "vimdiff"]
+	tool = vimdiff
   keepBackup = false
   keepTemporaries = false
   prompt = false
+	conflictstyle = diff3
 
 [diff]
   tool = vimdiff
   renames = copies
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+  keepTemporaries = false
+  prompt = false
+[mergetool]
+	prompt = false
+[pager]
+	branch = false

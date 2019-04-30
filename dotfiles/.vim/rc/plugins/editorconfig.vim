@@ -1,0 +1,1 @@
+NeoBundle 'editorconfig/editorconfig-vim'

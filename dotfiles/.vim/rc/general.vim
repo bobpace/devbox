@@ -11,7 +11,7 @@ set softtabstop=2
 set shiftwidth=2
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-set clipboard=unnamedplus      "sync with x11 forwarded clipboard
+set clipboard=unnamed
 set hidden                   "allow buffer switching without saving
 set autoread 
 set showcmd
@@ -20,9 +20,6 @@ set showfulltag
 set modeline
 set modelines=5
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/.mimosa
-set visualbell t_vb=         " No beep sound
-set noerrorbells
-set novisualbell
 set hlsearch
 set incsearch
 set ignorecase
@@ -37,4 +34,15 @@ set virtualedit=block
 set splitbelow
 set splitright
 set linebreak
+set autoread
 au BufRead *.spark set filetype=html
+
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
+
+"augroup XML
+    "autocmd!
+    "autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
+"augroup END

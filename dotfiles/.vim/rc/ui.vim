@@ -1,8 +1,7 @@
 set encoding=utf-8
 set background=dark
-let g:solarized_termcolors=16
-set t_Co=16
-silent! colorscheme solarized
+set t_Co=256
+silent! colorscheme vividchalk
 set showmatch                                       "automatically highlight matching braces/brackets/etc.
 set matchtime=2                                     "tens of a second to show matching parentheses
 set number
@@ -15,8 +14,8 @@ set foldmethod=syntax                               "fold via syntax of files
 set foldlevelstart=99                               "open all folds by default
 let g:xml_syntax_folding=1                          "enable xml folding
 
-set timeoutlen=200
-set ttimeoutlen=200
+set timeoutlen=300
+set ttimeoutlen=10
 
 set mouse=a                                         "enable mouse
 set mousehide                                       "hide when characters are typed
@@ -33,6 +32,7 @@ if has('gui_running')
   set guioptions-=T
   set transparency=2
 else
+  set shellpipe=>
   let &t_ti.="\e[1 q"
   let &t_SI.="\e[5 q"
   let &t_EI.="\e[1 q"

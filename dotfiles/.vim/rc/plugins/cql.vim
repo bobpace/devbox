@@ -1,0 +1,1 @@
+NeoBundle 'elubow/cql-vim'
