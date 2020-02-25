@@ -1,0 +1,1 @@
+NeoBundle 'leafgarland/typescript-vim'
