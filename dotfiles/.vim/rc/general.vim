@@ -36,6 +36,7 @@ set splitright
 set linebreak
 set autoread
 au BufRead *.spark set filetype=html
+au BufRead *.cake set filetype=cs
 
 set noerrorbells visualbell t_vb=
 if has('autocmd')
