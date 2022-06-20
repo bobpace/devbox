@@ -16,6 +16,9 @@
 [push]
   default = tracking
 
+[pull]
+  ff = only
+
 [alias]
   fmerge = merge --ff-only
   st = status -s
@@ -42,6 +45,7 @@
   stashki = stash save --keep-index
   undo = reset HEAD^
   unci = reset --soft HEAD@{1}
+  pu = ![[ $(git config "branch.$(git symbolic-ref --short HEAD).merge") = '' ]] && git push -u origin $(git symbolic-ref --short HEAD) || git push
 
 [branch]
   autosetupmerge = true

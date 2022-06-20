@@ -37,6 +37,7 @@ set linebreak
 set autoread
 au BufRead *.spark set filetype=html
 au BufRead *.cake set filetype=cs
+au BufRead *.lic set filetype=ruby
 
 set noerrorbells visualbell t_vb=
 if has('autocmd')

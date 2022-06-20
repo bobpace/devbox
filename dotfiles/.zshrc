@@ -8,6 +8,7 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 export GRADLE_HOME=/usr/local/bin/gradle
 export HOST_IP=$(ipconfig getifaddr en0)
 export MONO_GAC_PREFIX="/usr/local"
+export DOTNET_ROOT="/usr/local/opt/dotnet/libexec"
 #export HOST_IP=localhost
 
 # 10ms for key sequences
@@ -154,12 +155,20 @@ rmiuntagged() {
   docker rmi $(docker images -q --filter "dangling=true")
 }
 
-#fortune -s computers | cowsay -f small | lolcat
-autoload -U bashcompinit
-bashcompinit
-eval "$(bash-complete setup)"
+manageDockerVolumes() {
+  docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i sh
+}
 
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-export WORKON_HOME=$HOME/.virtualenvs
-pyenv virtualenvwrapper_lazy
+lsVmRoot() {
+  docker run --rm -it -v /:/vm-root alpine:edge ls -l /vm-root$1
+}
+
+#fortune -s computers | cowsay -f small | lolcat
+#autoload -U bashcompinit
+#bashcompinit
+#eval "$(bash-complete setup)"
+
+#if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+#export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+#export WORKON_HOME=$HOME/.virtualenvs
+#pyenv virtualenvwrapper_lazy
