@@ -1,7 +1,12 @@
 set encoding=utf-8
 set background=dark
-set t_Co=256
-silent! colorscheme vividchalk
+"set t_Co=256
+"let g:rehash256 = 1
+"let g:molokai_original = 1
+silent! colorscheme molokai
+"silent! colorscheme vividchalk
+"let g:solarized_termcolors=256
+"silent! colorscheme solarized
 set showmatch                                       "automatically highlight matching braces/brackets/etc.
 set matchtime=2                                     "tens of a second to show matching parentheses
 set number
@@ -37,6 +42,10 @@ else
   let &t_SI.="\e[5 q"
   let &t_EI.="\e[1 q"
   let &t_te.="\e[0 q"
+
+	"let &t_SI="\e[5 q"
+	"let &t_SR="\e[3 q"
+	"let &t_EI="\e[2 q"
 endif
 
 if &term =~ '^screen'

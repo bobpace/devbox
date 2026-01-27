@@ -1,10 +1,10 @@
 [user]
   name = Bob Pace
-  email = bob.pace@gmail.com
+  email = bob.pace@getweave.com
 
 [core]
   autocrlf = input
-	editor = /usr/local/bin/vim
+  editor = /usr/local/bin/vim
 
 [color]
   ui = true
@@ -15,9 +15,11 @@
 
 [push]
   default = tracking
+  autoSetupRemote = true
 
 [pull]
-  ff = only
+  #ff = only
+  rebase = false
 
 [alias]
   fmerge = merge --ff-only
@@ -46,12 +48,15 @@
   undo = reset HEAD^
   unci = reset --soft HEAD@{1}
   pu = ![[ $(git config "branch.$(git symbolic-ref --short HEAD).merge") = '' ]] && git push -u origin $(git symbolic-ref --short HEAD) || git push
+  fs = "!f() { git fetch origin main:main && git switch main -c $1 && git merge --squash -;}; f"
 
 [branch]
   autosetupmerge = true
 
 [merge]
-	tool = vimdiff
+  #tool = vimdiff
+  tool = goland
+  #tool = fugitive
   keepBackup = false
   keepTemporaries = false
   prompt = false
@@ -64,7 +69,12 @@
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
   keepTemporaries = false
   prompt = false
+[mergetool "goland"]
+    cmd = /usr/local/bin/goland merge $LOCAL $REMOTE $BASE $MERGED
+    trustExitCode = true
 [mergetool]
 	prompt = false
 [pager]
 	branch = false
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/

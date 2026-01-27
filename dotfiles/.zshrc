@@ -1,15 +1,19 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export JAVA_HOME=$(/usr/libexec/java_home)
+#export JAVA_HOME=$(/usr/libexec/java_home)
 #eval $(docker-machine env default)
 #export APP_HOSTNAME=dockerhost
 #export ZSH_TMUX_AUTOSTART=true
-export ANDROID_HOME=/usr/local/opt/android-sdk
-export GRADLE_HOME=/usr/local/bin/gradle
+#export ANDROID_HOME=/usr/local/opt/android-sdk
+#export GRADLE_HOME=/usr/local/bin/gradle
 export HOST_IP=$(ipconfig getifaddr en0)
-export MONO_GAC_PREFIX="/usr/local"
-export DOTNET_ROOT="/usr/local/opt/dotnet/libexec"
+#export MONO_GAC_PREFIX="/usr/local"
+#export DOTNET_ROOT="/usr/local/opt/dotnet/libexec"
 #export HOST_IP=localhost
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export CLOUDSDK_HOME=$HOME/google-cloud-sdk
 
 # 10ms for key sequences
 KEYTIMEOUT=1
@@ -24,7 +28,12 @@ skip_global_compinit=1
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="amuse"
+#ZSH_THEME="agnoster"
 DISABLE_AUTO_UPDATE="true"
+
+#unset LSCOLORS
+#export CLICOLOR=1
+#export CLICOLOR_FORCE=1
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -64,7 +73,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux docker)
+plugins=(git tmux docker kubectl gcloud)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -167,8 +176,18 @@ lsVmRoot() {
 #autoload -U bashcompinit
 #bashcompinit
 #eval "$(bash-complete setup)"
+autoload -U +X compinit && compinit
+#source <(bart completion zsh)
+source <(kubectl completion zsh)
+export GOPRIVATE="weavelab.xyz/*"
+export GOLANG_PROTOBUF_REGISTRATION_CONFLICT=warn
+export DOCKER_HOST='unix:///Users/bob.pace.getweave/.colima/default/docker.sock'
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE="/var/run/docker.sock"
 
 #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 #export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 #export WORKON_HOME=$HOME/.virtualenvs
 #pyenv virtualenvwrapper_lazy
+
+. "$HOME/.local/bin/env"
+#export PATH="/usr/local/opt/go@1.24/bin:$PATH"

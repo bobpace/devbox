@@ -1,0 +1,1 @@
+NeoBundle 'uarun/vim-protobuf'

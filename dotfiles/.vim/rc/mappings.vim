@@ -33,3 +33,7 @@ map <leader>bd :Bclose<cr>
 nnoremap <leader><leader> :b#<CR>
 
 nnoremap <leader>fx :silent %!xmllint --encode UTF-8 --format -<CR>
+
+vmap <leader>fs <ESC>:'<,'>! pg_format --spaces 2 --function-case 2<CR>
+
+"nnoremap <leader>sg :!open "https://github.com/search?q=org\%3Aweave-lab+<cword>&type=code"<CR><CR>
